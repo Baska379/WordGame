@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useState } from "react";
-//   import englishWords from "../words/englishWords";
+import { getAllEnWords } from "../_utiles/check";
 interface Props {
   addButton: boolean;
   setAddButton: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,15 +19,9 @@ const WordTable1 = forwardRef((props: Props, ref) => {
     handler();
   };
 
-  //   useImperativeHandle(ref, () => {
-  //     return {
-  //       table1: handler,
-  //     };
-  //   });
   const handler = () => {
     props.setSendWord1("");
-    const enWord = "";
-    // englishWords.split("\n");
+    const enWord: string[] = getAllEnWords().en1.split("\n");
     const num: number = enWord.length;
     const rand: number = Math.floor(Math.random() * num);
     const find = saveIndex.indexOf(rand);

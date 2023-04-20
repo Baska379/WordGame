@@ -1,14 +1,19 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
 // Icons
-import {GiCheckMark} from "react-icons/gi"
-import {VscError} from "react-icons/vsc"
+import { GiCheckMark } from "react-icons/gi";
+import { VscError } from "react-icons/vsc";
 // Components
 import WordTable1 from "./WordTable1";
 import WordTable2 from "./WordTable2";
 import WordTable3 from "./WordTable3";
 import Ask from "./Ask";
+import {
+  assistent,
+  table1Check,
+  table2Check,
+  table3Check,
+} from "../_utiles/check";
 
 const FirstPage = () => {
   const [tableNumber, setTableNumber] = useState<number>(1);
@@ -39,14 +44,116 @@ const FirstPage = () => {
   useEffect(() => {
     handler();
   }, []);
-
   const handler = () => {
-    // wordTableRef.current?.handler();
-    // wordTable2Ref.current?.table2();
-    // wordTable3Ref.current?.table3();
     setcheckBoolean(false);
     setNextBoolean(true);
   };
+  const sendCheck = () => {
+    if (tableBoolean === false && tableBoolean2 === false) {
+      const result: boolean = table1Check(sendWord1, findEn);
+      if (result === true) {
+        const find = assistent(findEn, tableNumber).toString();
+        list__word.push(findEn + ": - " + find);
+        setCount(count + 1);
+        setSuccess(true);
+        time();
+        setNextBoolean(false);
+        setError(false);
+        setList__Word(list__word);
+        setcheckBoolean(true);
+      } else {
+        errorFun();
+      }
+    }
+    sendCheck2();
+  };
+  const sendCheck2 = () => {
+    if (tableBoolean === true && tableBoolean2 === false) {
+      const result: boolean = table1Check(sendWord1, findEn);
+      const result2: boolean = table2Check(sendWord2, findEn2);
+      if (result === true && result2 === true) {
+        const find = assistent(findEn, tableNumber).toString();
+        const find2 = assistent(findEn2, tableNumber2).toString();
+        list__word.push(findEn + ": - " + find);
+        list__word.push(findEn2 + ": - " + find2);
+        setCount(count + 2);
+        setSuccess(true);
+        setError(false);
+        time();
+        setNextBoolean(false);
+        setList__Word(list__word);
+        setcheckBoolean(true);
+      } else {
+        errorFun();
+      }
+    }
+    if (tableBoolean2 === true && tableBoolean === true) {
+      const result: boolean = table1Check(sendWord1, findEn);
+      const result2: boolean = table2Check(sendWord2, findEn2);
+      const result3: boolean = table3Check(sendWord3, findEn3);
+      if (result === true && result2 === true && result3 === true) {
+        const find = assistent(findEn, tableNumber).toString();
+        const find2 = assistent(findEn2, tableNumber2).toString();
+        const find3 = assistent(findEn3, tableNumber3).toString();
+        list__word.push(findEn + ": - " + find);
+        list__word.push(findEn2 + ": - " + find2);
+        list__word.push(findEn3 + ": - " + find3);
+        setCount(count + 3);
+        setSuccess(true);
+        setError(false);
+        time();
+        setNextBoolean(false);
+        setList__Word(list__word);
+        setcheckBoolean(true);
+      } else {
+        errorFun();
+      }
+    }
+    if (tableBoolean2 === true && tableBoolean === false) {
+      const result: boolean = table1Check(sendWord1, findEn);
+      const result3: boolean = table3Check(sendWord3, findEn3);
+      if (result === true && result3 === true) {
+        const find = assistent(findEn, tableNumber).toString();
+        const find3 = assistent(findEn3, tableNumber3).toString();
+        list__word.push(findEn + ": - " + find);
+        list__word.push(findEn3 + ": - " + find3);
+        setCount(count + 2);
+        setSuccess(true);
+        setError(false);
+        time();
+        setNextBoolean(false);
+        setList__Word(list__word);
+        setcheckBoolean(true);
+      } else {
+        errorFun();
+      }
+    }
+  };
+  const errorFun = () => {
+    setSuccess(false);
+    setError(true);
+    const find = assistent(findEn, tableNumber);
+
+    console.log(find);
+    if (tableBoolean === true) {
+      const find2 = assistent(findEn2, tableNumber2);
+
+      console.log(find2);
+    }
+    if (tableBoolean2 === true) {
+      const find3 = assistent(findEn3, tableNumber3);
+
+      console.log(find3);
+    }
+    time();
+  };
+  const time = () => {
+    setTimeout(() => {
+      setSuccess(false);
+      setError(false);
+    }, 2000);
+  };
+
   return (
     <div className="border-solid mt-[3rem] z-0 h-2/4 grid grid-cols-[28rem_2rem_3rem_1fr] grid-rows-[10rem_5rem] gap-3 justify-center relative bg-neutral-500/50 shadow-[0_0_20px_5px_rgba(0,0,0,1)] rounded-lg">
       <div className="grid grid-rows-3 gap-5">
@@ -60,7 +167,7 @@ const FirstPage = () => {
           setfindEn={setfindEn}
           setAskWord={setAskWord}
         />
-                {tableBoolean ? (
+        {tableBoolean ? (
           <WordTable2
             ref={wordTable2Ref}
             setTableBoolean2={setTableBoolean2}
@@ -76,7 +183,7 @@ const FirstPage = () => {
         ) : (
           ""
         )}
-                {tableBoolean2 ? (
+        {tableBoolean2 ? (
           <WordTable3
             ref={wordTable3Ref}
             setTableBoolean2={setTableBoolean2}
@@ -91,17 +198,19 @@ const FirstPage = () => {
         )}
       </div>
       <div>
-      <p className="text-base text-white text-center bg-[green] p-1 rounded-lg font-bold">{count}</p>
+        <p className="text-base text-white text-center bg-[green] p-1 rounded-lg font-bold">
+          {count}
+        </p>
       </div>
       <div className="m-0 relative">
         <GiCheckMark
           className="text-[2rem] bg-slate-500 rounded-lg p-1 text-white absolute left-0 top-0"
           style={{ opacity: success ? "1" : "0" }}
         />
-        <VscError className="absolute top-0 left-0 text-red-500 text-[2rem] bg-slate-500 rounded-lg" 
-        style={{ opacity: error ? "1" : "0" }} 
+        <VscError
+          className="absolute top-0 left-0 text-red-500 text-[2rem] bg-slate-500 rounded-lg"
+          style={{ opacity: error ? "1" : "0" }}
         />
-
       </div>
       <div className="row-span-2">
         {list__word.map((el, index) => {
@@ -114,19 +223,29 @@ const FirstPage = () => {
           );
         })}
       </div>
-          <div className="grid grid-cols-4">
-        
-        <button onClick={handler} className="bg-teal-500 m-auto px-5 py-1 text-center rounded-t-lg" disabled={nextBoolean}>
+      <div className="grid grid-cols-4">
+        <button
+          onClick={handler}
+          className="bg-teal-500 m-auto px-5 py-1 text-center rounded-t-lg"
+          disabled={nextBoolean}
+        >
           next
         </button>
-        <button className="bg-emerald-500 m-auto px-5 py-1 text-center rounded-t-lg" 
-        // onClick={sendCheck} 
-        disabled={checkBoolean}>
+        <button
+          className="bg-emerald-500 m-auto px-5 py-1 text-center rounded-t-lg"
+          // onClick={sendCheck}
+          disabled={checkBoolean}
+        >
           check
         </button>
-        <Ask askWord={askWord} askWord2={askWord2} tableBoolean={tableBoolean} tableBoolean2={tableBoolean2} askWord3={askWord3}/>
-      
-          </div>
+        <Ask
+          askWord={askWord}
+          askWord2={askWord2}
+          tableBoolean={tableBoolean}
+          tableBoolean2={tableBoolean2}
+          askWord3={askWord3}
+        />
+      </div>
     </div>
   );
 };
