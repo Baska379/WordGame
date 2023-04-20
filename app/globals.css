@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 body {
-  /* color: rgb(var(--foreground-rgb));
+  overflow: auto;
+  color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb)); */
+    rgb(var(--background-start-rgb));
+
 }
 input {
   outline: none;
@@ -26,4 +28,27 @@ input {
 }
 input:hover {
   box-shadow: none;
+}
+button {
+  cursor: pointer;
+  border: none;
+  overflow: hidden;
+}
+
+.hiddenSpan {
+  position: absolute;
+  border-radius: 1rem;
+  text-align: start;
+  max-width: 20rem;
+  cursor: auto;
+  transition: 0.5s;
+  font-weight: bold;
+  right: 0;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background: black;
+  border-radius: 0.5rem;
 }
