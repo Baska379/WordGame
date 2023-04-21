@@ -153,7 +153,7 @@ const Dictionary = () => {
         style={{ display: backButton ? "block" : "none" }}
         className="fixed bottom-0 font-bold left-0 rounded-lg bg-slate-50/50 px-4 py-1"
       >
-        Back 1 Page
+        Back Page {pageNumber - 1}
       </button>
     </div>
   );
