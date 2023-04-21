@@ -20,6 +20,8 @@ export const table1Check = (
   if (findEn !== null) {
     const enIndex: number = enWord.indexOf(findEn);
     const find: string = mnWord.slice(enIndex, enIndex + 1).toString();
+
+    console.log(find.split(", ").length);
     if (find.split(", ").length > 1) {
       const two = find.split(", ");
       two.forEach((el: string) => {

@@ -14,6 +14,9 @@ import {
   table2Check,
   table3Check,
 } from "../_utiles/check";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../GlobalRedux/strore";
+import { mainAction } from "../GlobalRedux/MainSlice";
 
 const FirstPage = () => {
   const [tableNumber, setTableNumber] = useState<number>(1);
@@ -41,14 +44,17 @@ const FirstPage = () => {
   const wordTableRef = useRef(null);
   const wordTable2Ref = useRef(null);
   const wordTable3Ref = useRef(null);
+  const disPatch = useDispatch<AppDispatch>()
   useEffect(() => {
     handler();
   }, []);
   const handler = () => {
-    setcheckBoolean(false);
-    setNextBoolean(true);
-  };
+    disPatch(mainAction.setNextBoolean(true))
+    disPatch(mainAction.setCheckBoolean(false))
+  }
+
   const sendCheck = () => {
+    disPatch(mainAction.sendCheck({time, errorFun}))
     if (tableBoolean === false && tableBoolean2 === false) {
       const result: boolean = table1Check(sendWord1, findEn);
       if (result === true) {
@@ -212,13 +218,13 @@ const FirstPage = () => {
           style={{ opacity: error ? "1" : "0" }}
         />
       </div>
-      <div className="row-span-2">
+      <div className="row-span-2 ">
         {list__word.map((el, index) => {
           const word: string[] = el.split("-");
           return (
-            <p key={el + index.toString()} className="word__list">
-              <span className="en">{word[0].toLowerCase()}</span>
-              <span className="mn">{word[1].toLowerCase()}</span>
+            <p key={el + index.toString()} className="font-bold">
+              <span className="text-black bg-white rounded-md">{word[0].toLowerCase()} </span>
+              <span className="text-white bg-black ml-2 rounded-md"> {word[1].toLowerCase()}</span>
             </p>
           );
         })}
@@ -233,7 +239,7 @@ const FirstPage = () => {
         </button>
         <button
           className="bg-emerald-500 m-auto px-5 py-1 text-center rounded-t-lg"
-          // onClick={sendCheck}
+          onClick={sendCheck}
           disabled={checkBoolean}
         >
           check
