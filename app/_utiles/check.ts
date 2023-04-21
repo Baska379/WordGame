@@ -1,3 +1,4 @@
+"use client";
 import { getWordsData } from "@/lib/words";
 export interface AllEnWords {
   en1: string;
@@ -126,6 +127,18 @@ export const assistent = function (
 export const askfindWord = function (ask: string): string {
   const mnWords = getWordsData().mnWords.toLowerCase().split("\n");
   const enWords = getWordsData().enWords.toLowerCase().split("\n");
+  const index: number = enWords.indexOf(ask);
+  return mnWords.slice(index, index + 1).toString();
+};
+export const askfindWord2 = function (ask: string): string {
+  const mnWords = getWordsData().mnWords2.toLowerCase().split("\n");
+  const enWords = getWordsData().enWords2.toLowerCase().split("\n");
+  const index: number = enWords.indexOf(ask);
+  return mnWords.slice(index, index + 1).toString();
+};
+export const askfindWord3 = function (ask: string): string {
+  const mnWords = getWordsData().mnWords3.toLowerCase().split("\n");
+  const enWords = getWordsData().enWords3.toLowerCase().split("\n");
   const index: number = enWords.indexOf(ask);
   return mnWords.slice(index, index + 1).toString();
 };

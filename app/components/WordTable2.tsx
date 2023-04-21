@@ -1,83 +1,60 @@
-import React, { useEffect, useState, forwardRef } from "react";
-import { getAllEnWords } from "../_utiles/check";
-interface Props {
-  setTableBoolean2: React.Dispatch<React.SetStateAction<boolean>>;
-  addButton1: boolean;
-  setAddButton1: React.Dispatch<React.SetStateAction<boolean>>;
-  setTableBoolean: React.Dispatch<React.SetStateAction<boolean>>;
-  setAddButton: React.Dispatch<React.SetStateAction<boolean>>;
-  setSendWord2: React.Dispatch<React.SetStateAction<string>>;
-  sendWord2: string;
-  setfindEn2: React.Dispatch<React.SetStateAction<string | null>>;
-  setAskWord2: React.Dispatch<React.SetStateAction<string>>;
-}
-const WordTable = forwardRef((props: Props, ref) => {
-  const [word, setWord] = useState<string>("");
-  const [saveIndex, setSaveIndex] = useState<number[]>([]);
-  const refresh = () => {
-    handler();
-  };
+// "use client";
+// import React, { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { RootState } from "../GlobalRedux/strore";
+// import { AppDispatch } from "../GlobalRedux/strore";
+// import { mainAction } from "../GlobalRedux/MainSlice";
 
-  useEffect(() => {
-    handler();
-  }, []);
-  const handler = () => {
-    props.setSendWord2("");
-    const enWord: string[] = getAllEnWords().en2.split("\n");
-    const num: number = enWord.length;
-    const rand: number = Math.floor(Math.random() * num);
-    const find = saveIndex.indexOf(rand);
-    if (find === -1) {
-      saveIndex.push(rand);
-      setSaveIndex(saveIndex);
-      const find = enWord.slice(rand, rand + 1);
-      props.setfindEn2(find.toString());
-      props.setAskWord2(find.toString());
-      setWord(find.toString());
-    } else {
-      refresh();
-    }
-  };
+// const WordTable = () => {
+//   const disPatch = useDispatch<AppDispatch>();
+//   const main = useSelector((state: RootState) => state.main);
+//   const refresh = () => {
+//     handler();
+//   };
+//   useEffect(() => {
+//     handler();
+//   }, []);
+//   const handler = () => {
+//     disPatch(mainAction.handler2());
+//   };
 
-  const setHandler = (el: string) => {
-    props.setSendWord2(el);
-  };
-  function addHandler() {
-    props.setTableBoolean2(true);
-    props.setAddButton1(false);
-  }
-  function minusHandler() {
-    props.setTableBoolean(false);
-    props.setAddButton(true);
-  }
-  return (
-    <div className="grid grid-cols-2 gap-2 m-auto">
-      <p className="group w-full relative rounded-xl p-1 bg-black text-center items-center text-white font-bold text-[1rem] italic overflow-hidden ease-in duration-500">
-        {word}
-        <button
-          className="minusButton group-hover:translate-x-[0.5rem]"
-          onClick={minusHandler}
-        >
-          -
-        </button>
-        {props.addButton1 ? (
-          <button
-            className="addButton group-hover:translate-x-[-0.3rem]"
-            onClick={addHandler}
-          >
-            +
-          </button>
-        ) : (
-          ""
-        )}
-      </p>
-      <input
-        type="text"
-        value={props.sendWord2}
-        onChange={(el) => setHandler(el.target.value)}
-      />
-    </div>
-  );
-});
+//   const setHandler = (el: string) => {
+//     disPatch(mainAction.setSendWord2(el));
+//   };
+//   function addHandler() {
+//     disPatch(mainAction.addTable3());
+//   }
+//   function minusHandler() {
+//     disPatch(mainAction.minusTable2());
+//   }
+//   return (
+//     <div className="grid grid-cols-2 gap-2 m-auto">
+//       <p className="group w-full relative rounded-xl p-1 bg-black text-center items-center text-white font-bold text-[1rem] italic overflow-hidden ease-in duration-500">
+//         {main.word2}
+//         <button
+//           className="minusButton group-hover:translate-x-[0.5rem]"
+//           // onClick={minusHandler}
+//         >
+//           -
+//         </button>
+//         {main.addButton2 ? (
+//           <button
+//             className="addButton group-hover:translate-x-[-0.3rem]"
+//             // onClick={addHandler}
+//           >
+//             +
+//           </button>
+//         ) : (
+//           ""
+//         )}
+//       </p>
+//       <input
+//         type="text"
+//         value={main.sendWord2}
+//         // onChange={(el) => setHandler(el.target.value)}
+//       />
+//     </div>
+//   );
+// };
 
-export default WordTable;
+// export default WordTable;

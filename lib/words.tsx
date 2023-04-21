@@ -1,4 +1,3 @@
-import fs from "fs";
 import path from "path";
 import enWords from "@/words/englishWords";
 import enWords2 from "@/words/englishWords2";
