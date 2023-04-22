@@ -21,15 +21,16 @@ export const table1Check = (
   if (findEn !== null) {
     const enIndex: number = enWord.indexOf(findEn);
     const find: string = mnWord.slice(enIndex, enIndex + 1).toString();
-
-    console.log(find);
-    if (find.split(", ").length > 1) {
+    const findLen: number = find.split(", ").length;
+    if (findLen > 1) {
       const two = find.split(", ");
+      let truth = false;
       two.forEach((el: string) => {
-        if (el === sendWord1.toLowerCase()) {
-          return true;
+        if (sendWord1.toLowerCase() === el) {
+          truth = true;
         }
       });
+      if (truth) return true;
     } else if (sendWord1.toLowerCase() === find) {
       return true;
     } else {
@@ -50,11 +51,13 @@ export const table2Check = (
     const find: string = mnWord.slice(enIndex, enIndex + 1).toString();
     if (find.split(", ").length > 1) {
       const two = find.split(", ");
+      let truth = false;
       two.forEach((el: string) => {
         if (el === sendWord2.toLowerCase()) {
-          return true;
+          truth = true;
         }
       });
+      if (truth) return true;
     } else if (sendWord2.toLowerCase() === find) {
       return true;
     } else {
@@ -75,11 +78,13 @@ export const table3Check = (
     const find: string = mnWord.slice(enIndex, enIndex + 1).toString();
     if (find.split(", ").length > 1) {
       const two = find.split(", ");
+      let truth = false;
       two.forEach((el: string) => {
         if (el === sendWord3.toLowerCase()) {
-          return true;
+          truth = true;
         }
       });
+      if (truth) return true;
     } else if (sendWord3.toLowerCase() === find) {
       return true;
     } else {

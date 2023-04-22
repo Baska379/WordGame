@@ -29,7 +29,7 @@ const initialState: MainState = {
   count: 0,
   success: false,
   error: false,
-  nextBoolean: false,
+  nextBoolean: true,
   checkBoolean: false,
   list__word: [],
   word1: "",
@@ -63,14 +63,14 @@ export const mainSlice = createSlice({
       const errorFun = () => {
         s.error = true;
         const find = assistent(s.findEn, s.tableNumber);
-        console.log(find);
+        console.log(find.toString());
         if (s.tableBoolean === true) {
           const find2 = assistent(s.findEn2, s.tableNumber2);
-          console.log(find2);
+          console.log(find2.toString());
         }
         if (s.tableBoolean2 === true) {
           const find3 = assistent(s.findEn3, s.tableNumber3);
-          console.log(find3);
+          console.log(find3.toString());
         }
       };
       if (s.tableBoolean === false && s.tableBoolean2 === false) {

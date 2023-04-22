@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { getAllEnWords, getAllMnWords } from "../_utiles/check";
+import { randomStr } from "../_utiles/randomString";
 const Dictionary = () => {
   const [page1, setPage1] = useState<boolean>(true);
   const [page2, setPage2] = useState<boolean>(false);
@@ -8,9 +9,6 @@ const Dictionary = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [nextButton, setNextButton] = useState<boolean>(true);
   const [backButton, setBackButton] = useState<boolean>(false);
-  const num = function (): string {
-    return (Math.ceil(Math.random() * 10000) * 1000).toString(32);
-  };
   const next = () => {
     setPageNumber(2);
     setBackButton(true);
@@ -38,7 +36,7 @@ const Dictionary = () => {
     }
   };
   return (
-    <div className="w-full z-0 h-full relative overflow-auto flex bg-[url('./img/dictionary.jpg')] bg-cover bg-no-repeat bg-center bg-scroll">
+    <div className="dictionary w-full z-0 h-full relative overflow-auto flex bg-[url('./img/dictionary.jpg')] bg-cover bg-no-repeat bg-center bg-scroll">
       {page1 ? (
         <>
           <div className="mt-10 text-white font-bold text-xl">
@@ -47,7 +45,7 @@ const Dictionary = () => {
                 .en1.split("\n")
                 .map((el, index) => (
                   <li
-                    key={el + num()}
+                    key={el + randomStr()}
                     className="bg-green-300/30 rounded-md mt-1"
                   >
                     {index + 1}: {el.toLowerCase()}
@@ -61,7 +59,7 @@ const Dictionary = () => {
                 .mn1.split("\n")
                 .map((el, index) => (
                   <li
-                    key={el + num()}
+                    key={el + randomStr()}
                     className="rounded-md mt-1 bg-amber-500/30"
                   >
                     {index + 1}: {el.toLowerCase()}
@@ -81,7 +79,7 @@ const Dictionary = () => {
                 .en2.split("\n")
                 .map((el, index) => (
                   <li
-                    key={el + num()}
+                    key={el + randomStr()}
                     className="bg-green-300/30 rounded-md mt-1"
                   >
                     {index + 1}: {el.toLowerCase()}
@@ -95,7 +93,7 @@ const Dictionary = () => {
                 .mn2.split("\n")
                 .map((el, index) => (
                   <li
-                    key={el + num()}
+                    key={el + randomStr()}
                     className="rounded-md mt-1 bg-amber-500/30"
                   >
                     {index + 1}: {el.toLowerCase()}
@@ -115,7 +113,7 @@ const Dictionary = () => {
                 .en3.split("\n")
                 .map((el, index) => (
                   <li
-                    key={el + num()}
+                    key={el + randomStr()}
                     className="bg-green-300/30 rounded-md mt-1"
                   >
                     {index + 1}: {el.toLowerCase()}
@@ -129,7 +127,7 @@ const Dictionary = () => {
                 .mn3.split("\n")
                 .map((el, index) => (
                   <li
-                    key={el + num()}
+                    key={el + randomStr()}
                     className="rounded-md mt-1 bg-amber-500/30"
                   >
                     {index + 1}: {el.toLowerCase()}

@@ -38,7 +38,6 @@ button {
   position: absolute;
   border-radius: 1rem;
   text-align: start;
-  max-width: 20rem;
   cursor: auto;
   transition: 0.5s;
   font-weight: bold;
@@ -50,4 +49,7 @@ button {
 ::-webkit-scrollbar-thumb {
   background: black;
   border-radius: 0.5rem;
+}
+.dictionary::-webkit-scrollbar-thumb {
+  background: white;
 }

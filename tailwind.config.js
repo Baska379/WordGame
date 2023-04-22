@@ -6,7 +6,13 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        tall: {
+          raw: "(max-width: 850px)",
+        },
+      },
+    },
   },
 
   plugins: [],

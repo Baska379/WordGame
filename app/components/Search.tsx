@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { getAllEnWords, getAllMnWords } from "../_utiles/check";
+import { randomStr } from "../_utiles/randomString";
 
 const Search = () => {
   const [enWord1, setenWord1] = useState<string[]>(getAllEnWords().all);
@@ -31,15 +32,7 @@ const Search = () => {
       setListBoolean(true);
     }
   };
-  const num = function (): string {
-    return (
-      Math.ceil(Math.random() * 10000) *
-      1000 *
-      1000 *
-      1000 *
-      1000
-    ).toString(32);
-  };
+
   return (
     <div className="flex-1 relative">
       <div className="">
@@ -56,7 +49,7 @@ const Search = () => {
       >
         <ul className="ml-2">
           {findWords1.map((el, i) => {
-            return <li key={el + num() + i}>{el.toLowerCase()}</li>;
+            return <li key={el + randomStr() + i}>{el.toLowerCase()}</li>;
           })}
         </ul>
       </div>

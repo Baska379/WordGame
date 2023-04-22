@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../GlobalRedux/strore";
 import { askfindWord, askfindWord2, askfindWord3 } from "../_utiles/check";
+import { randomStr } from "../_utiles/randomString";
 const Ask = () => {
   const [visible, setVisible] = useState<boolean>(true);
   const [findWord, setFindWord] = useState<string>("");
@@ -31,36 +32,60 @@ const Ask = () => {
       onClick={find}
     >
       <span
-        className="hiddenSpan text-white bg-black h-8 top-12 z-30"
+        className="hiddenSpan text-white bg-black h-8 w-[10rem] top-12 z-30"
         style={{
           opacity: visible ? "0" : "1",
-          width: `${findWord.length + 1}vmax`,
         }}
       >
-        1. {findWord}
+        {findWord.split(", ").map((el, i) => {
+          if (i === 0) {
+            return (
+              <p key={randomStr()} className="ml-1">
+                1. {el}
+              </p>
+            );
+          }
+          return <p></p>;
+        })}
       </span>
       {main.tableBoolean ? (
         <span
-          className=""
+          className="hiddenSpan text-white bg-black h-8 w-[10rem] top-24 z-30"
           style={{
             opacity: visible ? "0" : "1",
-            width: `${findWord2.length + 1}vmax`,
           }}
         >
-          2. {findWord2}
+          {findWord2.split(", ").map((el, i) => {
+            if (i === 0) {
+              return (
+                <p key={randomStr()} className="ml-1">
+                  2. {el}
+                </p>
+              );
+            }
+            return <p></p>;
+          })}
         </span>
       ) : (
         ""
       )}
       {main.tableBoolean2 ? (
         <span
-          className=""
+          className="hiddenSpan text-white bg-black h-8 w-[10rem] top-[9rem] z-30"
           style={{
             opacity: visible ? "0" : "1",
-            width: `${findWord3.length + 1}vmax`,
           }}
         >
-          3. {findWord3}
+          {findWord3.split(", ").map((el, i) => {
+            if (i === 0) {
+              return (
+                <p key={randomStr()} className="ml-1">
+                  3. {el}
+                </p>
+              );
+            }
+            return <p></p>;
+          })}
         </span>
       ) : (
         ""
