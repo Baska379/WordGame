@@ -1,5 +1,5 @@
 "use client";
-import { getWordsData } from "@/lib/words";
+import { getWordsData } from "./words";
 export interface AllEnWords {
   en1: string;
   en2: string;
@@ -22,7 +22,7 @@ export const table1Check = (
     const enIndex: number = enWord.indexOf(findEn);
     const find: string = mnWord.slice(enIndex, enIndex + 1).toString();
 
-    console.log(find.split(", ").length);
+    console.log(find);
     if (find.split(", ").length > 1) {
       const two = find.split(", ");
       two.forEach((el: string) => {

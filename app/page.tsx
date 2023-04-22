@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
-// import FirstPage from "./components/FirstPage";
-
+import First from "./First";
 const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
-  return <main>{/* <FirstPage /> */}</main>;
+  return <main>
+    <First/>
+  </main>;
 }

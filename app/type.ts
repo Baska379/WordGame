@@ -1,0 +1,33 @@
+export interface MainState {
+  tableNumber: number;
+  tableNumber2: number;
+  tableNumber3: number;
+  askWord: string;
+  askWord2: string;
+  askWord3: string;
+  tableBoolean: boolean;
+  tableBoolean2: boolean;
+  addButton: boolean;
+  addButton2: boolean;
+  sendWord1: string;
+  sendWord2: string;
+  sendWord3: string;
+  findEn: string | null;
+  findEn2: string | null;
+  findEn3: string | null;
+  count: number;
+  success: boolean;
+  error: boolean;
+  nextBoolean: boolean;
+  checkBoolean: boolean;
+  list__word: string[];
+  word1: string;
+  saveIndex1: number[];
+  word2: string;
+  saveIndex2: number[];
+  word3: string;
+  saveIndex3: number[];
+  duplicationTable1: false;
+  duplicationTable2: false;
+  duplicationTable3: false;
+}
