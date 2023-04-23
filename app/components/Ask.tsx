@@ -32,7 +32,7 @@ const Ask = () => {
       onClick={find}
     >
       <span
-        className="hiddenSpan text-white bg-black h-8 w-[10rem] top-12 z-30"
+        className="hiddenSpan text-black bg-slate-100/50 h-8 w-[10rem] top-12 z-30"
         style={{
           opacity: visible ? "0" : "1",
         }}
@@ -40,7 +40,7 @@ const Ask = () => {
         {findWord.split(", ").map((el, i) => {
           if (i === 0) {
             return (
-              <p key={randomStr()} className="ml-1">
+              <p key={randomStr()} className="ml-2">
                 1. {el}
               </p>
             );
@@ -50,7 +50,7 @@ const Ask = () => {
       </span>
       {main.tableBoolean ? (
         <span
-          className="hiddenSpan text-white bg-black h-8 w-[10rem] top-24 z-30"
+          className="hiddenSpan text-black bg-slate-100/50 h-8 w-[10rem] top-24 z-30"
           style={{
             opacity: visible ? "0" : "1",
           }}
@@ -58,7 +58,7 @@ const Ask = () => {
           {findWord2.split(", ").map((el, i) => {
             if (i === 0) {
               return (
-                <p key={randomStr()} className="ml-1">
+                <p key={randomStr()} className="ml-2">
                   2. {el}
                 </p>
               );
@@ -71,7 +71,7 @@ const Ask = () => {
       )}
       {main.tableBoolean2 ? (
         <span
-          className="hiddenSpan text-white bg-black h-8 w-[10rem] top-[9rem] z-30"
+          className="hiddenSpan text-black bg-slate-100/50 h-8 w-[10rem] top-[9rem] z-30"
           style={{
             opacity: visible ? "0" : "1",
           }}
@@ -79,7 +79,7 @@ const Ask = () => {
           {findWord3.split(", ").map((el, i) => {
             if (i === 0) {
               return (
-                <p key={randomStr()} className="ml-1">
+                <p key={randomStr()} className="ml-2">
                   3. {el}
                 </p>
               );

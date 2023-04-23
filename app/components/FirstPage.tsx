@@ -60,7 +60,7 @@ const FirstPage = () => {
           style={{ opacity: main.error ? "1" : "0" }}
         />
       </div>
-      <div className="row-span-2 tall:absolute tall:left-0 tall:top-[20rem]">
+      <div className="row-span-2 tall:absolute tall:left-0 tall:top-[20rem] overflow-auto">
         {main.list__word.map((el, index) => {
           const word: string[] = el.split("-");
           return (

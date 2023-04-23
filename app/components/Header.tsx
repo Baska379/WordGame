@@ -4,6 +4,7 @@ import Link from "next/link";
 import Search from "./Search";
 const Header = () => {
   const [menu , setMenu] = useState<boolean>(false)
+
   const swap = () => {
     setMenu(!menu)
   }
@@ -17,6 +18,7 @@ const Header = () => {
         >
           Dictionary
         </Link>
+        <Link href="/favourite" className="px-4 py-1 rounded-lg text-black bg-slate-50/50">Favourite</Link>
         {menu ?        <div className="absolute top-11 justify-center items-center left-0 w-[8rem] h-[8rem] font-bold bg-emerald-300/70 flex flex-col rounded-md">
           
           <Link
