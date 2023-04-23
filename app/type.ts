@@ -30,4 +30,11 @@ export interface MainState {
   duplicationTable1: false;
   duplicationTable2: false;
   duplicationTable3: false;
+  favourite1: string[];
+  favourite2: string[];
+  favourite3: string[];
+  fav1: boolean;
+  fav2: boolean;
+  fav3: boolean;
+  favouriteWords: string[];
 }

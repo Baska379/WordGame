@@ -10,11 +10,11 @@ const WordTable3 = () => {
   const main = useSelector((state: RootState) => state.main);
 
   useEffect(() => {
-    if(main.duplicationTable3 === false){
+  
       handler();
-    }
     
-  }, [main.duplicationTable3]);
+    
+  }, []);
   const handler = () => {
     disPatch(mainAction.handler3());
   };
@@ -27,10 +27,10 @@ const WordTable3 = () => {
   };
   return (
     <div className="grid grid-cols-2 gap-2 m-auto">
-      <p className="group w-full relative rounded-xl p-1 bg-black text-center items-center text-white font-bold text-[1rem] italic overflow-hidden ease-in duration-500">
+      <p className="group w-full relative rounded-xl p-1 bg-slate-100/70 text-center items-center text-slate-900/90 font-bold text-[1rem] italic overflow-hidden ease-in duration-500">
         {main.word3}
         <button
-          className="minusButton group-hover:translate-x-[0.5rem]"
+          className="minusButton group-hover:translate-x-[0.5rem] text-black"
           onClick={minusButton}
         >
           -

@@ -49,6 +49,9 @@ const Search = () => {
       >
         <ul className="ml-2">
           {findWords1.map((el, i) => {
+            if(el === " - " + undefined){
+              return "";
+            }
             return <li key={el + randomStr() + i}>{el.toLowerCase()}</li>;
           })}
         </ul>

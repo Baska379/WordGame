@@ -41,6 +41,13 @@ const initialState: MainState = {
   duplicationTable1: false,
   duplicationTable2: false,
   duplicationTable3: false,
+  favourite1: [],
+  favourite2: [],
+  favourite3: [],
+  fav1: true,
+  fav2: true,
+  fav3: true,
+  favouriteWords: [],
 };
 
 export const mainSlice = createSlice({
@@ -95,7 +102,7 @@ export const mainSlice = createSlice({
           const find2 = assistent(s.findEn2, s.tableNumber2).toString();
           s.list__word.push(s.findEn + ": - " + find);
           s.list__word.push(s.findEn2 + ": - " + find2);
-          s.count = +2;
+          s.count = s.count + 2;
           s.success = true;
           s.error = false;
           s.nextBoolean = false;
@@ -115,7 +122,7 @@ export const mainSlice = createSlice({
           s.list__word.push(s.findEn + ": - " + find);
           s.list__word.push(s.findEn2 + ": - " + find2);
           s.list__word.push(s.findEn3 + ": - " + find3);
-          s.count = +3;
+          s.count = s.count + 3;
           s.success = true;
           s.error = false;
           s.nextBoolean = false;
@@ -132,7 +139,7 @@ export const mainSlice = createSlice({
           const find3 = assistent(s.findEn3, s.tableNumber3).toString();
           s.list__word.push(s.findEn + ": - " + find);
           s.list__word.push(s.findEn3 + ": - " + find3);
-          s.count = +2;
+          s.count = s.count + 2;
           s.success = true;
           s.error = false;
           s.nextBoolean = false;
@@ -143,20 +150,32 @@ export const mainSlice = createSlice({
       }
     },
     handler1: (s) => {
-      s.sendWord1 = "";
-      const enWord: string[] = getAllEnWords().en1.split("\n");
-      const num: number = enWord.length;
-      const rand: number = Math.floor(Math.random() * num);
-      const find = s.saveIndex1.indexOf(rand);
-      if (find === -1) {
-        s.saveIndex1.push(rand);
-        const find = enWord.slice(rand, rand + 1).toString();
-        s.findEn = find;
-        s.word1 = find;
-        s.askWord = find;
-      } else {
-        s.duplicationTable1 = false;
-      }
+      const refresh = () => {
+        handle();
+      };
+      const handle = () => {
+        s.sendWord1 = "";
+        const enWord: string[] = getAllEnWords().en1.split("\n");
+        const num: number = enWord.length;
+        const rand: number = Math.floor(Math.random() * num);
+        const find = s.saveIndex1.indexOf(rand);
+        if (find === -1) {
+          s.saveIndex1.push(rand);
+          const find = enWord
+            .slice(rand, rand + 1)
+            .toString()
+            .toLowerCase();
+          s.findEn = find;
+          s.word1 = find;
+          s.askWord = find;
+          if (s.favouriteWords.filter((el) => el === find).length === 1) {
+            s.fav1 = false;
+          }
+        } else {
+          refresh();
+        }
+      };
+      handle();
     },
     setSendWord1: (s, a) => {
       s.sendWord1 = a.payload;
@@ -167,20 +186,27 @@ export const mainSlice = createSlice({
       s.addButton2 = true;
     },
     handler2: (s) => {
-      s.sendWord2 = "";
-      const enWord: string[] = getAllEnWords().en2.split("\n");
-      const num: number = enWord.length;
-      const rand: number = Math.floor(Math.random() * num);
-      const find = s.saveIndex2.indexOf(rand);
-      if (find === -1) {
-        s.saveIndex2.push(rand);
-        const find = enWord.slice(rand, rand + 1).toString();
-        s.findEn2 = find;
-        s.askWord2 = find;
-        s.word2 = find;
-      } else {
-        s.duplicationTable2 = false;
-      }
+      const refresh = () => {
+        handle();
+      };
+      const handle = () => {
+        s.sendWord2 = "";
+        const enWord: string[] = getAllEnWords().en2.split("\n");
+        const num: number = enWord.length;
+        const rand: number = Math.floor(Math.random() * num);
+        const find = s.saveIndex2.indexOf(rand);
+        if (find === -1) {
+          s.saveIndex2.push(rand);
+          const find = enWord.slice(rand, rand + 1).toString();
+          s.findEn2 = find;
+          s.askWord2 = find;
+          s.word2 = find;
+        } else {
+          refresh();
+        }
+      };
+
+      handle();
     },
     setSendWord2: (s, a) => {
       s.sendWord2 = a.payload;
@@ -194,20 +220,26 @@ export const mainSlice = createSlice({
       s.tableBoolean = false;
     },
     handler3: (s) => {
-      s.sendWord3 = "";
-      const enWord: string[] = getAllEnWords().en3.split("\n");
-      const num: number = enWord.length;
-      const rand: number = Math.floor(Math.random() * num);
-      const find = s.saveIndex3.indexOf(rand);
-      if (find === -1) {
-        s.saveIndex3.push(rand);
-        const find = enWord.slice(rand, rand + 1).toString();
-        s.findEn3 = find;
-        s.askWord3 = find;
-        s.word3 = find;
-      } else {
-        s.duplicationTable3 = false;
-      }
+      const refresh = () => {
+        handle();
+      };
+      const handle = () => {
+        s.sendWord3 = "";
+        const enWord: string[] = getAllEnWords().en3.split("\n");
+        const num: number = enWord.length;
+        const rand: number = Math.floor(Math.random() * num);
+        const find = s.saveIndex3.indexOf(rand);
+        if (find === -1) {
+          s.saveIndex3.push(rand);
+          const find = enWord.slice(rand, rand + 1).toString();
+          s.findEn3 = find;
+          s.askWord3 = find;
+          s.word3 = find;
+        } else {
+          refresh();
+        }
+        handle();
+      };
     },
     setSendWord3: (s, a) => {
       s.sendWord3 = a.payload;
@@ -216,6 +248,26 @@ export const mainSlice = createSlice({
     minusTable3: (s) => {
       s.addButton2 = true;
       s.tableBoolean2 = false;
+    },
+
+    // Favourite
+
+    favouriteAdd: (s, a) => {
+      let truth = false;
+      const mnWord = assistent(a.payload, 1).toString();
+      s.favouriteWords.forEach((el, index) => {
+        if (el === a.payload) {
+          truth = true;
+        }
+      });
+      if (!truth) {
+        s.favouriteWords.push(a.payload);
+        s.favourite1.push(a.payload + "@@@" + mnWord);
+        s.fav1 = false;
+      }
+    },
+    favouriteRemove: (s, a) => {
+      s.favourite1.splice(a.payload, 1);
     },
   },
 });
