@@ -1,5 +1,6 @@
 import "./globals.css";
 import "./button.scss";
+import "./Header.scss";
 import Header from "./components/Header";
 export const metadata = {
   title: "Create Next App",
@@ -14,8 +15,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[url('./img/back.jpg')] bg-cover bg-no-repeat bg-center w-full h-screen">
-        <Header/>
-           {children}
+        <Header />
+        {children}
       </body>
     </html>
   );

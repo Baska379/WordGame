@@ -24,7 +24,7 @@ const Ask = () => {
   const time = function () {
     setTimeout(() => {
       setVisible(true);
-    }, 3000);
+    }, 5000);
   };
   return (
     <button
@@ -32,7 +32,7 @@ const Ask = () => {
       onClick={find}
     >
       <span
-        className="hiddenSpan text-black bg-slate-100/50 h-8 w-[10rem] top-12 z-30"
+        className="hiddenSpan text-black bg-slate-100/50 h-8 w-[20rem] top-12 z-30"
         style={{
           opacity: visible ? "0" : "1",
         }}
@@ -40,17 +40,17 @@ const Ask = () => {
         {findWord.split(", ").map((el, i) => {
           if (i === 0) {
             return (
-              <p key={randomStr()} className="ml-2">
+              <p key={el + randomStr()} className="ml-2">
                 1. {el}
               </p>
             );
           }
-          return <p></p>;
+          return <p key={randomStr()}></p>;
         })}
       </span>
       {main.tableBoolean ? (
         <span
-          className="hiddenSpan text-black bg-slate-100/50 h-8 w-[10rem] top-24 z-30"
+          className="hiddenSpan text-black bg-slate-100/50 h-8 w-[20rem] top-24 z-30"
           style={{
             opacity: visible ? "0" : "1",
           }}
@@ -58,12 +58,12 @@ const Ask = () => {
           {findWord2.split(", ").map((el, i) => {
             if (i === 0) {
               return (
-                <p key={randomStr()} className="ml-2">
+                <p key={el + randomStr()} className="ml-2">
                   2. {el}
                 </p>
               );
             }
-            return <p></p>;
+            return <p key={randomStr()}></p>;
           })}
         </span>
       ) : (
@@ -71,7 +71,7 @@ const Ask = () => {
       )}
       {main.tableBoolean2 ? (
         <span
-          className="hiddenSpan text-black bg-slate-100/50 h-8 w-[10rem] top-[9rem] z-30"
+          className="hiddenSpan text-black bg-slate-100/50 h-8 w-[20rem] top-[9rem] z-30"
           style={{
             opacity: visible ? "0" : "1",
           }}
@@ -79,12 +79,12 @@ const Ask = () => {
           {findWord3.split(", ").map((el, i) => {
             if (i === 0) {
               return (
-                <p key={randomStr()} className="ml-2">
+                <p key={el + randomStr()} className="ml-2">
                   3. {el}
                 </p>
               );
             }
-            return <p></p>;
+            return <p key={randomStr()}></p>;
           })}
         </span>
       ) : (

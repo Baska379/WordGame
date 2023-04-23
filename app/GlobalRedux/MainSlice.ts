@@ -8,7 +8,11 @@ import {
   table3Check,
 } from "../_utiles/check";
 import { MainState } from "../type";
-
+interface Tbool {
+  t: boolean;
+  t2?: boolean;
+  t3?: boolean;
+}
 const initialState: MainState = {
   tableNumber: 1,
   tableNumber2: 2,
@@ -27,8 +31,12 @@ const initialState: MainState = {
   findEn2: "",
   findEn3: "",
   count: 0,
-  success: false,
-  error: false,
+  success1: false,
+  success2: false,
+  success3: false,
+  error1: false,
+  error2: false,
+  error3: false,
   nextBoolean: true,
   checkBoolean: false,
   list__word: [],
@@ -41,9 +49,7 @@ const initialState: MainState = {
   duplicationTable1: false,
   duplicationTable2: false,
   duplicationTable3: false,
-  favourite1: [],
-  favourite2: [],
-  favourite3: [],
+  favourite: [],
   fav1: true,
   fav2: true,
   fav3: true,
@@ -60,15 +66,30 @@ export const mainSlice = createSlice({
     setCheckBoolean: (s, a) => {
       s.checkBoolean = a.payload;
     },
-    setSuccess: (s, a) => {
-      s.success = a.payload;
+    setSuccessFalse: (s) => {
+      s.success1 = false;
+      s.success2 = false;
+      s.success3 = false;
     },
-    setError: (s, a) => {
-      s.error = a.payload;
+    setErrorFalse: (s) => {
+      s.error1 = false;
+      s.error2 = false;
+      s.error3 = false;
     },
     sendCheck: (s) => {
+      let err: boolean = false;
+      let err2: boolean = false;
+      let err3: boolean = false;
+      let s1: boolean = false;
+      let s2: boolean = false;
+      let s3: boolean = false;
       const errorFun = () => {
-        s.error = true;
+        s.error1 = err;
+        s.error2 = err2;
+        s.error3 = err3;
+        s.success1 = s1;
+        s.success2 = s2;
+        s.success3 = s3;
         const find = assistent(s.findEn, s.tableNumber);
         console.log(find.toString());
         if (s.tableBoolean === true) {
@@ -86,11 +107,12 @@ export const mainSlice = createSlice({
           const find = assistent(s.findEn, s.tableNumber).toString();
           s.list__word.push(s.findEn + ": - " + find);
           s.count++;
-          s.success = true;
+          s.success1 = true;
           s.nextBoolean = false;
-          s.error = false;
+          s.error1 = false;
           s.checkBoolean = true;
         } else {
+          err = true;
           errorFun();
         }
       }
@@ -103,11 +125,25 @@ export const mainSlice = createSlice({
           s.list__word.push(s.findEn + ": - " + find);
           s.list__word.push(s.findEn2 + ": - " + find2);
           s.count = s.count + 2;
-          s.success = true;
-          s.error = false;
+          s.success1 = true;
+          s.error1 = false;
+          s.success2 = true;
+          s.error2 = false;
           s.nextBoolean = false;
           s.checkBoolean = true;
         } else {
+          if (!result && result2) {
+            err = true;
+            s2 = true;
+          }
+          if (result && !result2) {
+            s1 = true;
+            err2 = true;
+          }
+          if (!result && !result2) {
+            err = true;
+            err2 = true;
+          }
           errorFun();
         }
       }
@@ -123,11 +159,50 @@ export const mainSlice = createSlice({
           s.list__word.push(s.findEn2 + ": - " + find2);
           s.list__word.push(s.findEn3 + ": - " + find3);
           s.count = s.count + 3;
-          s.success = true;
-          s.error = false;
+          s.success1 = true;
+          s.error1 = false;
+          s.success2 = true;
+          s.error2 = false;
+          s.success3 = true;
+          s.error3 = false;
           s.nextBoolean = false;
           s.checkBoolean = true;
         } else {
+          if (result && !result2 && !result3) {
+            s1 = true;
+            err2 = true;
+            err3 = true;
+          }
+          if (result && result2 && !result3) {
+            s1 = true;
+            s2 = true;
+            err3 = true;
+          }
+          if (!result && result2 && !result3) {
+            err = true;
+            s2 = true;
+            err3 = true;
+          }
+          if (!result && result2 && result3) {
+            err = true;
+            s2 = true;
+            s3 = true;
+          }
+          if (!result && !result2 && result3) {
+            err = true;
+            err2 = true;
+            s3 = true;
+          }
+          if (result && !result2 && result3) {
+            s1 = true;
+            err2 = true;
+            s3 = true;
+          }
+          if (!result && !result2 && !result3) {
+            err = true;
+            err2 = true;
+            err3 = true;
+          }
           errorFun();
         }
       }
@@ -140,11 +215,25 @@ export const mainSlice = createSlice({
           s.list__word.push(s.findEn + ": - " + find);
           s.list__word.push(s.findEn3 + ": - " + find3);
           s.count = s.count + 2;
-          s.success = true;
-          s.error = false;
+          s.success1 = true;
+          s.error1 = false;
+          s.success3 = true;
+          s.error3 = false;
           s.nextBoolean = false;
           s.checkBoolean = true;
         } else {
+          if (result && !result3) {
+            s1 = true;
+            err3 = true;
+          }
+          if (!result && result3) {
+            err = true;
+            s3 = true;
+          }
+          if (!result && !result3) {
+            err = true;
+            err3 = true;
+          }
           errorFun();
         }
       }
@@ -158,8 +247,8 @@ export const mainSlice = createSlice({
         const enWord: string[] = getAllEnWords().en1.split("\n");
         const num: number = enWord.length;
         const rand: number = Math.floor(Math.random() * num);
-        const find = s.saveIndex1.indexOf(rand);
-        if (find === -1) {
+        const findIndex = s.saveIndex1.indexOf(rand);
+        if (findIndex === -1) {
           s.saveIndex1.push(rand);
           const find = enWord
             .slice(rand, rand + 1)
@@ -170,6 +259,8 @@ export const mainSlice = createSlice({
           s.askWord = find;
           if (s.favouriteWords.filter((el) => el === find).length === 1) {
             s.fav1 = false;
+          } else {
+            s.fav1 = true;
           }
         } else {
           refresh();
@@ -194,13 +285,18 @@ export const mainSlice = createSlice({
         const enWord: string[] = getAllEnWords().en2.split("\n");
         const num: number = enWord.length;
         const rand: number = Math.floor(Math.random() * num);
-        const find = s.saveIndex2.indexOf(rand);
-        if (find === -1) {
+        const findIndex = s.saveIndex2.indexOf(rand);
+        if (findIndex === -1) {
           s.saveIndex2.push(rand);
           const find = enWord.slice(rand, rand + 1).toString();
           s.findEn2 = find;
           s.askWord2 = find;
           s.word2 = find;
+          if (s.favouriteWords.filter((el) => el === find).length === 1) {
+            s.fav2 = false;
+          } else {
+            s.fav2 = true;
+          }
         } else {
           refresh();
         }
@@ -228,18 +324,23 @@ export const mainSlice = createSlice({
         const enWord: string[] = getAllEnWords().en3.split("\n");
         const num: number = enWord.length;
         const rand: number = Math.floor(Math.random() * num);
-        const find = s.saveIndex3.indexOf(rand);
-        if (find === -1) {
+        const findIndex = s.saveIndex3.indexOf(rand);
+        if (findIndex === -1) {
           s.saveIndex3.push(rand);
           const find = enWord.slice(rand, rand + 1).toString();
           s.findEn3 = find;
           s.askWord3 = find;
           s.word3 = find;
+          if (s.favouriteWords.filter((el) => el === find).length === 1) {
+            s.fav3 = false;
+          } else {
+            s.fav3 = true;
+          }
         } else {
           refresh();
         }
-        handle();
       };
+      handle();
     },
     setSendWord3: (s, a) => {
       s.sendWord3 = a.payload;
@@ -253,21 +354,75 @@ export const mainSlice = createSlice({
     // Favourite
 
     favouriteAdd: (s, a) => {
-      let truth = false;
-      const mnWord = assistent(a.payload, 1).toString();
-      s.favouriteWords.forEach((el, index) => {
-        if (el === a.payload) {
-          truth = true;
+      if (a.payload === s.tableNumber) {
+        let truth = false;
+        const mnWord = assistent(s.word1, a.payload).toString();
+        s.favouriteWords.forEach((el, index) => {
+          if (el === s.word1) {
+            truth = true;
+          }
+        });
+        if (!truth) {
+          s.favouriteWords.push(s.word1);
+          s.favourite.push(s.word1 + "@@@" + mnWord);
+          s.fav1 = false;
         }
-      });
-      if (!truth) {
-        s.favouriteWords.push(a.payload);
-        s.favourite1.push(a.payload + "@@@" + mnWord);
-        s.fav1 = false;
+      }
+      if (a.payload === s.tableNumber2) {
+        let truth = false;
+        const mnWord = assistent(s.word2, a.payload).toString();
+        s.favouriteWords.forEach((el, index) => {
+          if (el === s.word2) {
+            truth = true;
+          }
+        });
+        if (!truth) {
+          s.favouriteWords.push(s.word2);
+          s.favourite.push(s.word2 + "@@@" + mnWord);
+          s.fav2 = false;
+        }
+      }
+      if (a.payload === s.tableNumber3) {
+        let truth = false;
+        const mnWord = assistent(s.word3, a.payload).toString();
+        s.favouriteWords.forEach((el, index) => {
+          if (el === s.word3) {
+            truth = true;
+          }
+        });
+        if (!truth) {
+          s.favouriteWords.push(s.word3);
+          s.favourite.push(s.word3 + "@@@" + mnWord);
+          s.fav3 = false;
+        }
       }
     },
     favouriteRemove: (s, a) => {
-      s.favourite1.splice(a.payload, 1);
+      s.favourite.splice(a.payload, 1);
+      s.favouriteWords.splice(a.payload, 1);
+    },
+    favRemove: (s, a) => {
+      if (s.tableNumber === a.payload.num) {
+        if (s.favouriteWords.length > 0) {
+          s.favouriteWords.splice(s.favouriteWords.indexOf(a.payload.word), 1);
+          s.favourite.splice(s.favouriteWords.indexOf(a.payload.word), 1);
+          s.fav1 = true;
+        }
+      }
+      if (s.tableNumber2 === a.payload.num) {
+        if (s.favouriteWords.length > 0) {
+          s.favouriteWords.splice(s.favouriteWords.indexOf(a.payload.word), 1);
+          s.favourite.splice(s.favouriteWords.indexOf(a.payload.word), 1);
+          s.fav2 = true;
+        }
+      }
+      if (s.tableNumber3 === a.payload.num) {
+        if (s.favouriteWords.length > 0) {
+          s.favouriteWords.splice(s.favouriteWords.indexOf(a.payload.word), 1);
+          s.favourite.splice(s.favouriteWords.indexOf(a.payload.word), 1);
+          s.fav3 = true;
+        }
+      }
     },
   },
 });

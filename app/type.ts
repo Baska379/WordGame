@@ -16,8 +16,12 @@ export interface MainState {
   findEn2: string | null;
   findEn3: string | null;
   count: number;
-  success: boolean;
-  error: boolean;
+  success1: boolean;
+  success2: boolean;
+  success3: boolean;
+  error1: boolean;
+  error2: boolean;
+  error3: boolean;
   nextBoolean: boolean;
   checkBoolean: boolean;
   list__word: string[];
@@ -30,9 +34,7 @@ export interface MainState {
   duplicationTable1: false;
   duplicationTable2: false;
   duplicationTable3: false;
-  favourite1: string[];
-  favourite2: string[];
-  favourite3: string[];
+  favourite: string[];
   fav1: boolean;
   fav2: boolean;
   fav3: boolean;

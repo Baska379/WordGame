@@ -1,24 +1,23 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useDispatch , useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../GlobalRedux/strore";
 import { mainAction } from "../GlobalRedux/MainSlice";
-import {AiFillStar , AiOutlineStar} from "react-icons/ai"
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const WordTable1 = () => {
   const disPatch = useDispatch<AppDispatch>();
   const main = useSelector((state: RootState) => state.main);
   useEffect(() => {
-      disPatch(mainAction.handler1())
+    disPatch(mainAction.handler1());
   }, []);
   // favourite
-  const favourite = function (){
-    disPatch(mainAction.favouriteAdd(main.word1))
-
-  }
-  const favouriteRemove = function (){
-     
-  }
+  const favourite = function () {
+    disPatch(mainAction.favouriteAdd(1));
+  };
+  const favouriteRemove = function () {
+    disPatch(mainAction.favRemove({ word: main.word1, num: 1 }));
+  };
 
   const setHandler = (el: string) => {
     disPatch(mainAction.setSendWord1(el));
@@ -40,9 +39,17 @@ const WordTable1 = () => {
         ) : (
           ""
         )}
-        {main.fav1 ? <AiOutlineStar onClick={favourite} className="favourite group-hover:translate-y-[0.3rem] group-hover:translate-x-[-50%] text-black"/> : <AiFillStar onClick={favouriteRemove} className="favourite group-hover:translate-y-[0.3rem] group-hover:translate-x-[-50%] text-black"/>}
-      
-      
+        {main.fav1 ? (
+          <AiOutlineStar
+            onClick={favourite}
+            className="favourite group-hover:translate-y-[0.3rem] group-hover:translate-x-[-50%] text-black"
+          />
+        ) : (
+          <AiFillStar
+            onClick={favouriteRemove}
+            className="favourite group-hover:translate-y-[0.3rem] group-hover:translate-x-[-50%] text-black"
+          />
+        )}
       </p>
       <input
         type="text"

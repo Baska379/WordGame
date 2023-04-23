@@ -44,12 +44,12 @@ const Search = () => {
         />
       </div>
       <div
-        className="absolute top-12 right-0 h-[28rem] w-[100%] bg-black/80 overflow-auto text-white z-50"
+        className="absolute font-bold top-12 right-0 h-[28rem] w-[100%] bg-slate-100/50 overflow-auto text-black z-50"
         style={{ display: listBoolean ? "none" : "block" }}
       >
         <ul className="ml-2">
           {findWords1.map((el, i) => {
-            if(el === " - " + undefined){
+            if (el === " - " + undefined) {
               return "";
             }
             return <li key={el + randomStr() + i}>{el.toLowerCase()}</li>;

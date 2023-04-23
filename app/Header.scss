@@ -1,0 +1,10 @@
+.GameButton {
+  &:hover .GameMenu {
+    opacity: 1;
+    z-index: 100;
+  }
+}
+.GameMenu {
+  opacity: 0;
+  z-index: 100;
+}

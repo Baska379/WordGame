@@ -4,18 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../GlobalRedux/strore";
 import { AppDispatch } from "../GlobalRedux/strore";
 import { mainAction } from "../GlobalRedux/MainSlice";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const WordTable = () => {
   const disPatch = useDispatch<AppDispatch>();
   const main = useSelector((state: RootState) => state.main);
 
   useEffect(() => {
- 
-      handler()
-    
-  }, []);
-  const handler = () => {
     disPatch(mainAction.handler2());
+  }, []);
+
+  const favourite = function () {
+    disPatch(mainAction.favouriteAdd(2));
+  };
+  const favouriteRemove = function () {
+    disPatch(mainAction.favRemove({ word: main.word2, num: 2 }));
   };
 
   const setHandler = (el: string) => {
@@ -46,6 +49,17 @@ const WordTable = () => {
           </button>
         ) : (
           ""
+        )}
+        {main.fav2 ? (
+          <AiOutlineStar
+            onClick={favourite}
+            className="favourite group-hover:translate-y-[0.3rem] group-hover:translate-x-[-50%] text-black"
+          />
+        ) : (
+          <AiFillStar
+            onClick={favouriteRemove}
+            className="favourite group-hover:translate-y-[0.3rem] group-hover:translate-x-[-50%] text-black"
+          />
         )}
       </p>
       <input
