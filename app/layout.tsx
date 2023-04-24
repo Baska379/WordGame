@@ -1,6 +1,7 @@
 import "./globals.css";
 import "./button.scss";
 import "./Header.scss";
+import "./_Css/anime.scss";
 import Header from "./components/Header";
 export const metadata = {
   title: "Create Next App",
