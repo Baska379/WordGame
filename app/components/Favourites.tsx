@@ -1,14 +1,12 @@
 "use client";
 import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../GlobalRedux/strore";
-import { useDispatch } from "react-redux";
 import { mainAction } from "../GlobalRedux/MainSlice";
 import { randomStr } from "../_utiles/randomString";
+import { useAppDispatch , useAppSelector } from "../useState";
 const Favourites = () => {
-  const disPatch = useDispatch<AppDispatch>();
-  const { favourite } = useSelector((state: RootState) => state.main);
+  const disPatch = useAppDispatch();
+  const { favourite } = useAppSelector((state) => state.main);
 
   const favouriteRemove = function (index: number) {
     disPatch(mainAction.favouriteRemove(index));

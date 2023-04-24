@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../GlobalRedux/strore";
 import { mainAction } from "../GlobalRedux/MainSlice";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-
+import { useAppDispatch , useAppSelector } from "../useState";
 const WordTable1 = () => {
-  const disPatch = useDispatch<AppDispatch>();
-  const main = useSelector((state: RootState) => state.main);
+  const disPatch = useAppDispatch();
+  const main = useAppSelector((state) => state.main);
   useEffect(() => {
     disPatch(mainAction.handler1());
   }, []);

@@ -1,15 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../GlobalRedux/strore";
 import { askfindWord, askfindWord2, askfindWord3 } from "../_utiles/check";
 import { randomStr } from "../_utiles/randomString";
+import { useAppSelector } from "../useState";
 const Ask = () => {
   const [visible, setVisible] = useState<boolean>(true);
   const [findWord, setFindWord] = useState<string>("");
   const [findWord2, setFindWord2] = useState<string>("");
   const [findWord3, setFindWord3] = useState<string>("");
-  const main = useSelector((state: RootState) => state.main);
+  const main = useAppSelector((state) => state.main);
   const find = function () {
     setFindWord(askfindWord(main.askWord));
     if (main.tableBoolean) {

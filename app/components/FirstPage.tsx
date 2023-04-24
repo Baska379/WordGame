@@ -8,13 +8,11 @@ import WordTable1 from "./WordTable1";
 import WordTable2 from "./WordTable2";
 import WordTable3 from "./WordTable3";
 import Ask from "./Ask";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../GlobalRedux/strore";
 import { mainAction } from "../GlobalRedux/MainSlice";
-
+import { useAppDispatch , useAppSelector } from "../useState";
 const FirstPage = () => {
-  const disPatch = useDispatch<AppDispatch>();
-  const main = useSelector((state: RootState) => state.main);
+  const disPatch = useAppDispatch();
+  const main = useAppSelector((state) => state.main);
   const time = () => {
     setTimeout(() => {
       disPatch(mainAction.setSuccessFalse());

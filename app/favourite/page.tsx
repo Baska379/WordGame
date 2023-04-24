@@ -1,15 +1,12 @@
 'use client'
 import React from 'react'
-import { Provider } from 'react-redux'
-import { store } from '../GlobalRedux/strore'
+import Providers from '../components/Providers'
 import Favourites from '../components/Favourites'
 const Favourite = () => {
   return (
-    <Provider store={store}>
+    <Providers>
           <Favourites/>
-    </Provider>
-
-
+    </Providers>
   )
 }
 
