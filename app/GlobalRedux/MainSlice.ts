@@ -7,7 +7,7 @@ import {
   table2Check,
   table3Check,
 } from "../_utiles/check";
-import { MainState } from "../type";
+
 interface Tbool {
   t: boolean;
   t2?: boolean;

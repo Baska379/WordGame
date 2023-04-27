@@ -1,4 +1,5 @@
-const text:string = `хайр
+"use client";
+const text: string = `хайр
 анхаарал халамж
 айдас
 уурлах, эгдүүцэх
@@ -251,7 +252,7 @@ const text:string = `хайр
 баар
 цэс
 тооцооны хуудас
-захиалах
+захиалах, захиалга
 кафе
 тавиур
 үйлчлэх
@@ -497,7 +498,6 @@ const text:string = `хайр
 тааруулах
 оёх
 үс
-живэр сахал
-`
+живэр сахал`;
 
-export default text
+export default text;

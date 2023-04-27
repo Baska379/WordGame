@@ -1,3 +1,4 @@
+"use client";
 const text: string = `try
 win
 fail

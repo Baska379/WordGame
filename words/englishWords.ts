@@ -1,3 +1,4 @@
+"use client";
 const text: string = `rude
 suitable
 conversation
