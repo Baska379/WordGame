@@ -498,6 +498,5 @@ hanger
 fit
 sew
 hair
-moustache
-`;
+moustache`;
 export default text;

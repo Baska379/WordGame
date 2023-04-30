@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-[url('./img/back.jpg')] bg-cover bg-no-repeat bg-center w-full h-screen relative">
+      <body className="bg-[url('./img/back.jpg')] duration-200 bg-cover bg-no-repeat bg-center w-full h-screen relative">
         <Providers>
           <Header />
           {children}

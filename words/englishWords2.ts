@@ -498,6 +498,5 @@ plus sign
 minus sign
 division sign
 multiplication sign
-equals sign
-`;
+equals sign`;
 export default text;
