@@ -25,6 +25,18 @@
   transition: 0.5s;
   z-index: 10;
 }
+@mixin dis {
+  box-shadow: none;
+
+  &::after {
+    content: none;
+  }
+  &::before {
+    content: none;
+  }
+  background: rgba(0, 255, 17, 0.307);
+  border-radius: 200%;
+}
 .redCol {
   @include main();
   &::before {
@@ -38,6 +50,9 @@
   &:hover {
     background: red;
     box-shadow: 0 0 50px 10px rgba(255, 0, 0, 0.33);
+  }
+  &:disabled {
+    @include dis();
   }
 }
 
@@ -55,6 +70,9 @@
     background: rgba(245, 159, 11);
     box-shadow: 0 0 50px 10px rgba(245, 159, 11, 0.33);
   }
+  &:disabled {
+    @include dis();
+  }
 }
 .limaCol {
   @include main();
@@ -70,6 +88,9 @@
   &:hover {
     background: rgba(190, 242, 100);
     box-shadow: 0 0 50px 10px rgba(190, 242, 100, 0.33);
+  }
+  &:disabled {
+    @include dis();
   }
 }
 .emeraldCol {
@@ -87,6 +108,9 @@
     background: rgba(16, 185, 129);
     box-shadow: 0 0 50px 10px rgba(16, 185, 129, 0.33);
   }
+  &:disabled {
+    @include dis();
+  }
 }
 .purpleCol {
   @include main();
@@ -102,6 +126,9 @@
   &:hover {
     background: rgba(168, 85, 247);
     box-shadow: 0 0 50px 10px rgba(168, 85, 247, 0.33);
+  }
+  &:disabled {
+    @include dis();
   }
 }
 .pinkCol {
@@ -119,6 +146,9 @@
     background: rgba(236, 72, 153);
     box-shadow: 0 0 50px 10px rgba(236, 72, 153, 0.33);
   }
+  &:disabled {
+    @include dis();
+  }
 }
 .roseCol {
   @include main();
@@ -134,6 +164,9 @@
   &:hover {
     background: rgba(244, 63, 94);
     box-shadow: 0 0 50px 10px rgba(244, 63, 94, 0.33);
+  }
+  &:disabled {
+    @include dis();
   }
 }
 .skyCol {
@@ -151,6 +184,9 @@
     background: rgba(14, 165, 233);
     box-shadow: 0 0 50px 10px rgba(14, 165, 233, 0.33);
   }
+  &:disabled {
+    @include dis();
+  }
 }
 .fuchsiaCol {
   @include main();
@@ -167,6 +203,9 @@
     background: rgba(162, 28, 175);
     box-shadow: 0 0 50px 10px rgba(162, 28, 175, 0.33);
   }
+  &:disabled {
+    @include dis();
+  }
 }
 .yellowCol {
   @include main();
@@ -182,6 +221,9 @@
   &:hover {
     background: rgba(133, 77, 14);
     box-shadow: 0 0 50px 10px rgba(133, 77, 14, 0.33);
+  }
+  &:disabled {
+    @include dis();
   }
 }
 

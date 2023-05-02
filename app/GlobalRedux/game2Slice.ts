@@ -14,10 +14,14 @@ interface Game2Type {
   lineNumber: number;
   partOneDis: boolean[];
   partTwoDis: boolean[];
+  endBoolean: boolean;
+  gameCount: number;
 }
 interface CheckType {
   title: string;
   word: string;
+
+  num: string;
 }
 const initialState: Game2Type = {
   enWords: [],
@@ -31,6 +35,8 @@ const initialState: Game2Type = {
   lineNumber: 5,
   partOneDis: [],
   partTwoDis: [],
+  endBoolean: false,
+  gameCount: 0,
 };
 
 const game2Slice = createSlice({
@@ -38,6 +44,8 @@ const game2Slice = createSlice({
   initialState,
   reducers: {
     getGame2AllWords: (s) => {
+      s.partOneDis = [];
+      s.partTwoDis = [];
       const getWord: GetWordsType = getWords(s.index);
       s.enWords = getWord.en;
       s.mnWords = getWord.mn;
@@ -50,10 +58,10 @@ const game2Slice = createSlice({
         if (index === -1) s.enIndex.push(num);
         if (index2 === -1) s.mnIndex.push(num2);
       }
-      for (let i = 0; i <= 4; i++) {
+      for (let i = 1; i <= s.lineNumber; i++) {
         s.partOneDis.push(false);
       }
-      for (let i = 0; i <= 4; i++) {
+      for (let i = 1; i <= s.lineNumber; i++) {
         s.partTwoDis.push(false);
       }
     },
@@ -64,10 +72,10 @@ const game2Slice = createSlice({
       s.mnIndex = [];
       s.partOneDis = [];
       s.partTwoDis = [];
-      for (let i = 0; i <= 4; i++) {
+      for (let i = 1; i <= s.lineNumber; i++) {
         s.partOneDis.push(false);
       }
-      for (let i = 0; i <= 4; i++) {
+      for (let i = 1; i <= s.lineNumber; i++) {
         s.partTwoDis.push(false);
       }
     },
@@ -80,11 +88,17 @@ const game2Slice = createSlice({
           );
           const index2: number = s.enWords.findIndex((el) => el === s.enWord);
           if (index2 === index) {
+            s.gameCount += 1;
             s.mnWords.splice(index, 1, "");
             s.enWords.splice(index, 1, "");
             s.enWord = "";
             s.mnWord = "";
             s.gameStart = true;
+            s.partOneDis[parseInt(a.payload.num)] = true;
+            s.partTwoDis[parseInt(a.payload.num)] = true;
+            if (s.gameCount === s.lineNumber) {
+              s.endBoolean = true;
+            }
           }
         }
       }
@@ -96,17 +110,26 @@ const game2Slice = createSlice({
           );
           const index2: number = s.mnWords.findIndex((el) => el === s.mnWord);
           if (index2 === index) {
+            s.gameCount += 1;
             s.mnWords.splice(index, 1, "");
             s.enWords.splice(index, 1, "");
             s.enWord = "";
             s.mnWord = "";
             s.gameStart = true;
+            s.partOneDis[parseInt(a.payload.num)] = true;
+            s.partTwoDis[parseInt(a.payload.num)] = true;
+            if (s.gameCount === s.lineNumber) {
+              s.endBoolean = true;
+            }
           }
         }
       }
     },
     gameStartFalse: (s) => {
       s.gameStart = false;
+    },
+    setEndBoolean: (s, a: PayloadAction<boolean>) => {
+      s.endBoolean = a.payload;
     },
   },
 });

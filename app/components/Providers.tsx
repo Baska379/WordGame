@@ -1,10 +1,9 @@
-'use client'
-import { Provider } from "react-redux"
-import {store} from "../GlobalRedux/strore"
-function Providers  ({children} : {children: React.ReactNode})  {
-  return (
-   <Provider store={store} > {children}</Provider>
-  )
-}
+"use client";
+import { Provider } from "react-redux";
+import { store } from "../GlobalRedux/strore";
 
-export default Providers
+const Providers = function ({ children }: { children: React.ReactNode }) {
+  return <Provider store={store}> {children}</Provider>;
+};
+
+export default Providers;

@@ -31,7 +31,6 @@ input:hover {
 button {
   cursor: pointer;
   border: none;
-  overflow: hidden;
 }
 
 .hiddenSpan {

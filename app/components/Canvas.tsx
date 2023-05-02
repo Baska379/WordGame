@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { init } from "../_utiles/particle";
+
 import { dashInit } from "../_utiles/dashLink";
 import { useAppDispatch, useAppSelector } from "../useState";
 import { g2Dash } from "../GlobalRedux/DashSlice";

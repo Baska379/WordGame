@@ -7,10 +7,13 @@ interface PropsType {
   ids: string;
   zone: string;
   word: string;
+  disabled: boolean;
+  num: string;
 }
 interface EventType extends EventTarget {
   id: string;
   title: string;
+  name: string;
 }
 const Cricle = (props: PropsType) => {
   const disPatch = useAppDispatch();
@@ -28,18 +31,29 @@ const Cricle = (props: PropsType) => {
         title: (event as EventType).title,
       })
     );
+
     disPatch(
-      game2Action.check({ title: (event as EventType).title, word: props.word })
+      game2Action.check({
+        title: (event as EventType).title,
+        word: props.word,
+        num: (event as EventType).name,
+      })
     );
   };
   return (
     <div
-      title={props.zone}
-      id={`@@@${props.ids}@@@`}
-      onClick={(event) => typeSend(event.target)}
-      className={`text-white cursor-pointer font-bold text-[1.1rem] w-[10rem] h-[4rem] flex gap-5 self-center justify-center rounded-[40%] text-center  items-center ${props.color}`}
+      className={`text-white cursor-pointer font-bold text-[1.1rem] w-[10rem] h-[4rem] flex gap-5 self-center justify-center  text-center  items-center `}
     >
-      {props.word}
+      <button
+        title={props.zone}
+        name={props.num}
+        id={`@@@${props.ids}@@@`}
+        onClick={(event) => typeSend(event.target)}
+        disabled={props.disabled}
+        className={`w-full h-full rounded-[40%] overflow-visible ${props.color}`}
+      >
+        {props.word}
+      </button>
     </div>
   );
 };

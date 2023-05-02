@@ -1,5 +1,4 @@
 "use client";
-
 export function dashInit(
   context: CanvasRenderingContext2D,
   y: number,
@@ -18,7 +17,6 @@ export function dashInit(
   var timeE: number = Math.floor((xSize + xSpeed) / xSpeed) * xSpeed;
   var time: number = 0;
   var xTime: number = xSize / xSpeed;
-  console.time();
   const dash = new Dash(ctx, y, x, y2, x2, yTime, xSpeed);
   function animate() {
     time += xSpeed;
@@ -31,7 +29,7 @@ export function dashInit(
     }
   }
   animate();
-  console.timeEnd();
+
   return { boo: true, xTime: xTime };
 }
 
