@@ -1,25 +1,24 @@
 "use client";
-import { getWordsData } from "./words";
+import { GetWordsType } from "../game2Types";
+import { getAllEnWords, getAllMnWords } from "./check";
+import { getWords } from "./gameHelpFun";
 
-export function getMn1(findIndex: number[]): string | undefined {
-  const mn = getWordsData().mnWords;
-  const mnArray = mn.split("\n");
-  function refresh() {
-    handle();
-  }
-  function handle(): string | undefined {
-    const randomNum = Math.floor(Math.random() * mnArray.length);
-    const findIn = findIndex.indexOf(randomNum);
-    if (findIn === -1) {
-      findIndex.push(randomNum);
-      const find = mnArray.slice(randomNum, randomNum + 1).toString();
-      return find;
-    } else {
-      refresh();
+export function getMn(findIndex: number[], line: number): GetWordsType {
+  const words: GetWordsType = getWords(findIndex, line);
+  return words;
+}
+
+export function checkInputEn(mn: string, en: string) {
+  const enWords: string[] = getAllEnWords().all;
+  const mnWords: string[] = getAllMnWords().all;
+  const index: number = enWords.findIndex((el) => el === en);
+  const findMn = mnWords.find((el, i) => {
+    if (i === index) {
+      return el;
     }
-  }
-  const str = handle();
-  if (str) {
-    return str;
-  }
+  });
+  if (!findMn) return false;
+  if (index === -1) false;
+  if (findMn === mn) return true;
+  return false;
 }
