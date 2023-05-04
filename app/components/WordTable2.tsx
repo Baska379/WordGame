@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { mainAction } from "../GlobalRedux/MainSlice";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { useAppDispatch , useAppSelector } from "../useState";
+import { useAppDispatch, useAppSelector } from "../useState";
 
 const WordTable = () => {
   const disPatch = useAppDispatch();
@@ -63,6 +63,7 @@ const WordTable = () => {
       <input
         type="text"
         value={main.sendWord2}
+        className="smScreenMax:text-[15px] smScreenMax:w-[180px]"
         onChange={(el) => setHandler(el.target.value)}
       />
     </div>

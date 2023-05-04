@@ -52,7 +52,7 @@ const EnInput = () => {
           onChange={(el) => handler1(el.target.value)}
           type="text"
           placeholder="Үг оруулана уу"
-          className="bg-slate-200/30 placeholder:text-start placeholder:text-slate-100 font-bold px-[0.5rem] py-[0.2rem] m-auto w-[70%] text-black text-center"
+          className="bg-slate-200/30 smScreenMax:placeholder:text-[1rem] smScreenMax:w-[95%] placeholder:text-start placeholder:text-slate-100 font-bold px-[0.5rem] py-[0.2rem] m-auto w-[70%] text-black text-center"
         />
       </div>
       <div className="text-center relative duration-700">
@@ -76,7 +76,7 @@ const EnInput = () => {
           onChange={(el) => handler2(el.target.value)}
           type="text"
           placeholder="Үг оруулана уу"
-          className="bg-slate-200/30 placeholder:text-start placeholder:text-slate-100 px-[0.5rem] py-[0.2rem] m-auto w-[70%] text-black font-bold text-center"
+          className="bg-slate-200/30 smScreenMax:placeholder:text-[1rem] smScreenMax:w-[95%] placeholder:text-start placeholder:text-slate-100 px-[0.5rem] py-[0.2rem] m-auto w-[70%] text-black font-bold text-center"
         />
       </div>
       <div className="text-center relative duration-700">
@@ -100,7 +100,7 @@ const EnInput = () => {
           onChange={(el) => handler3(el.target.value)}
           type="text"
           placeholder="Үг оруулана уу"
-          className=" px-[0.5rem] py-[0.2rem] placeholder:text-start placeholder:text-slate-100 m-auto w-[70%] bg-slate-200/30 text-black font-bold text-center"
+          className=" px-[0.5rem] py-[0.2rem] smScreenMax:w-[95%] smScreenMax:placeholder:text-[1rem] placeholder:text-start placeholder:text-slate-100 m-auto w-[70%] bg-slate-200/30 text-black font-bold text-center"
         />
       </div>
     </div>

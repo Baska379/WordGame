@@ -1,0 +1,13 @@
+.smGameMenu {
+  &::after {
+    content: "";
+    top: 15px;
+    left: -58px;
+    width: 20px;
+    height: 20px;
+    background: black;
+    position: absolute;
+    transform: rotateZ(45deg);
+    background: rgba(110, 231, 183, 0.7);
+  }
+}

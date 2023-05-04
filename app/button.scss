@@ -65,3 +65,12 @@
     content: none;
   }
 }
+
+@media (max-width: 650px) {
+  .addButton {
+    bottom: -0.5rem;
+  }
+  .minusButton {
+    top: -0.9rem;
+  }
+}

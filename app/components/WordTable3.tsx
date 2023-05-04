@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { useAppDispatch , useAppSelector } from "../useState";
+import { useAppDispatch, useAppSelector } from "../useState";
 import { mainAction } from "../GlobalRedux/MainSlice";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
@@ -49,6 +49,7 @@ const WordTable3 = () => {
       <input
         type="text"
         value={main.sendWord3}
+        className="smScreenMax:text-[15px] smScreenMax:w-[180px]"
         onChange={(el) => setHandler(el.target.value)}
       />
     </div>

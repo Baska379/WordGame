@@ -2,14 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { mainAction } from "../GlobalRedux/MainSlice";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { useAppDispatch , useAppSelector } from "../useState";
+import { useAppDispatch, useAppSelector } from "../useState";
 const WordTable1 = () => {
   const disPatch = useAppDispatch();
   const main = useAppSelector((state) => state.main);
   useEffect(() => {
     disPatch(mainAction.handler1());
   }, []);
-  // favourite
   const favourite = function () {
     disPatch(mainAction.favouriteAdd(1));
   };
@@ -23,13 +22,14 @@ const WordTable1 = () => {
   const addHandler = function () {
     disPatch(mainAction.addTable2());
   };
+
   return (
     <div className="grid grid-cols-2 gap-2 m-auto">
-      <p className="group w-full relative rounded-xl p-1 bg-slate-100/70 text-center items-center overflow-hidden text-slate-900/90 font-bold text-[1rem] italic ease-in duration-500">
+      <p className="group w-full smScreenMax:text-[15px] smScreenMax:w-[180px] relative rounded-xl p-1 bg-slate-100/70 text-center items-center overflow-hidden text-slate-900/90 font-bold text-[1rem] italic ease-in duration-500">
         {main.word1}
         {main.addButton ? (
           <button
-            className="addButton group-hover:translate-x-[-0.3rem] text-black"
+            className="addButton smScreenMax:bottom-[1rem] group-hover:translate-x-[-0.3rem] text-black"
             onClick={addHandler}
           >
             +
@@ -51,6 +51,7 @@ const WordTable1 = () => {
       </p>
       <input
         type="text"
+        className="smScreenMax:text-[15px] smScreenMax:w-[180px]"
         value={main.sendWord1}
         onChange={(el) => setHandler(el.target.value)}
       />

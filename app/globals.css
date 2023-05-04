@@ -4,6 +4,7 @@
 
 body {
   overflow: auto;
+  font-family: url("./fonts/Roboto-MediumItalic.ttf");
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

@@ -9,7 +9,7 @@ import WordTable2 from "./WordTable2";
 import WordTable3 from "./WordTable3";
 import Ask from "./Ask";
 import { mainAction } from "../GlobalRedux/MainSlice";
-import { useAppDispatch , useAppSelector } from "../useState";
+import { useAppDispatch, useAppSelector } from "../useState";
 const FirstPage = () => {
   const disPatch = useAppDispatch();
   const main = useAppSelector((state) => state.main);
@@ -51,7 +51,7 @@ const FirstPage = () => {
   };
 
   return (
-    <div className="border-solid mt-[3rem] z-0 h-2/4 grid grid-cols-[28rem_3rem_2rem_1fr] grid-rows-[10rem_5rem] gap-3 justify-center relative bg-neutral-500/50 shadow-[0_0_20px_5px_rgba(0,0,0,1)] rounded-lg tall:grid-cols-[28rem_2rem_3rem] tall:grid-rows-[10rem_5rem_20rem]">
+    <div className="border-solid mt-[3rem] z-0 h-2/4 grid grid-cols-[28rem_3rem_2rem_1fr] grid-rows-[10rem_5rem] gap-3 justify-center relative bg-neutral-500/50 shadow-[0_0_20px_5px_rgba(0,0,0,1)] rounded-lg tall:grid-cols-[28rem_2rem_3rem] tall:grid-rows-[10rem_5rem_20rem] smScreenMax:text-[13px] smScreenMax:grid-cols-[23rem_1px]">
       <div className="grid grid-rows-3 gap-5">
         <WordTable1 />
         {main.tableBoolean ? <WordTable2 /> : ""}
@@ -61,22 +61,22 @@ const FirstPage = () => {
       <div className="grid grid-rows-3">
         <div className="m-0 relative">
           <GiCheckMark
-            className="text-[2rem] bg-slate-500 rounded-lg p-1 translate-y-[-70%] text-white absolute left-0 top-[50%]"
+            className="text-[2rem] bg-slate-500 rounded-lg p-1 smScreenMax:left-[-3rem] translate-y-[-70%] text-white absolute left-0 top-[50%]"
             style={{ opacity: main.success1 ? "1" : "0" }}
           />
           <VscError
-            className="absolute translate-y-[-70%] top-[50%] left-0 text-red-500 text-[2rem] bg-slate-500 rounded-lg"
+            className="absolute translate-y-[-70%] top-[50%] smScreenMax:left-[-3rem] left-0 text-red-500 text-[2rem] bg-slate-500 rounded-lg"
             style={{ opacity: main.error1 ? "1" : "0" }}
           />
         </div>
         {main.tableBoolean ? (
           <div className="m-0 relative">
             <GiCheckMark
-              className="text-[2rem] bg-slate-500 translate-y-[-50%] top-[50%] rounded-lg p-1 text-white absolute left-0"
+              className="text-[2rem] bg-slate-500 rounded-lg p-1 smScreenMax:left-[-3rem] translate-y-[-70%] text-white absolute left-0 top-[48%]"
               style={{ opacity: main.success2 ? "1" : "0" }}
             />
             <VscError
-              className="absolute translate-y-[-50%] top-[50%] left-0 text-red-500 text-[2rem] bg-slate-500 rounded-lg"
+              className="absolute translate-y-[-50%] top-[50%] smScreenMax:left-[-3rem] left-0 text-red-500 text-[2rem] bg-slate-500 rounded-lg"
               style={{ opacity: main.error2 ? "1" : "0" }}
             />
           </div>
@@ -86,11 +86,11 @@ const FirstPage = () => {
         {main.tableBoolean2 ? (
           <div className="m-0 relative">
             <GiCheckMark
-              className="text-[2rem] bg-slate-500 rounded-lg p-1 text-white absolute left-0 translate-y-[-30%] top-[50%]"
+              className="text-[2rem] bg-slate-500 rounded-lg p-1 smScreenMax:left-[-3rem] translate-y-[-70%] text-white absolute left-0 top-[50%]"
               style={{ opacity: main.success3 ? "1" : "0" }}
             />
             <VscError
-              className="absolute translate-y-[-30%] top-[50%] left-0 text-red-500 text-[2rem] bg-slate-500 rounded-lg"
+              className="absolute translate-y-[-30%] top-[50%] smScreenMax:left-[-3rem] left-0 text-red-500 text-[2rem] bg-slate-500 rounded-lg"
               style={{ opacity: main.error3 ? "1" : "0" }}
             />
           </div>
@@ -98,12 +98,12 @@ const FirstPage = () => {
           ""
         )}
       </div>
-      <div>
-        <p className="text-base text-white text-center bg-[green] p-1 rounded-lg font-bold">
+      <div className="">
+        <p className="text-base smScreenMax:m-auto smScreenMax:w-[5rem] text-white text-center bg-[green] p-1 rounded-lg font-bold">
           {main.count}
         </p>
       </div>
-      <div className="row-span-2 tall:absolute tall:left-0 tall:top-[20rem] overflow-auto">
+      <div className="row-span-2 tall:absolute tall:left-0 tall:top-[20rem] overflow-auto ">
         {main.list__word.map((el, index) => {
           const word: string[] = el.split("-");
           return (
@@ -118,7 +118,7 @@ const FirstPage = () => {
           );
         })}
       </div>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-4 smScreenMax:row-span-2 smScreenMax:absolute smScreenMax:top-[40%] smScreenMax:left-0">
         <button
           onClick={handler}
           className="bg-teal-700 m-auto px-5 py-1 text-center rounded-t-lg disabled:bg-teal-200"

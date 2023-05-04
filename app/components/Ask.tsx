@@ -31,7 +31,7 @@ const Ask = () => {
       onClick={find}
     >
       <span
-        className="hiddenSpan text-black bg-slate-100/50 h-8 w-[20rem] top-12 z-30"
+        className="hiddenSpan smScreenMax:w-[10rem] smScreenMax:text-[13px] text-black bg-slate-100/50 h-8 w-[20rem] top-12 z-30"
         style={{
           opacity: visible ? "0" : "1",
         }}
