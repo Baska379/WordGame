@@ -11,6 +11,9 @@ module.exports = {
         tall: {
           raw: "(max-width: 850px)",
         },
+        smScreen: {
+          raw: "(max-width: 650px)",
+        },
       },
     },
   },
