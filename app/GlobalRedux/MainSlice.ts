@@ -8,11 +8,6 @@ import {
   table3Check,
 } from "../_utiles/check";
 
-interface Tbool {
-  t: boolean;
-  t2?: boolean;
-  t3?: boolean;
-}
 const initialState: MainState = {
   tableNumber: 1,
   tableNumber2: 2,
