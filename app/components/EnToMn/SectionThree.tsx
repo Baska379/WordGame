@@ -1,7 +1,6 @@
 "use client";
-
+import { randomStr } from "@/app/_utiles/randomString";
 import { useAppSelector } from "@/app/useState";
-
 const SectionThree = () => {
   const { allWords } = useAppSelector((state) => state.enToMn);
   return (
@@ -9,7 +8,7 @@ const SectionThree = () => {
       {allWords.map((el, i) => {
         const words = el.split("---");
         return (
-          <p className="ml-6 smScreenMin:ml-2">
+          <p key={el + randomStr()} className="ml-6 smScreenMin:ml-2">
             {words[0]} - <span>{words[1]}</span>
           </p>
         );
