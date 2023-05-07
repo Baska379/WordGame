@@ -1,6 +1,6 @@
 "use client";
 import { game2Action } from "@/app/GlobalRedux/game2Slice";
-import { useAppDispatch, useAppSelector } from "@/app/useState";
+import { useAppDispatch } from "@/app/useState";
 import React from "react";
 const NextButton = () => {
   const disPatch = useAppDispatch();
@@ -15,7 +15,7 @@ const NextButton = () => {
         className="cursor-pointer m-auto px-5 py-2 bg-fuchsia-700/70 font-bold"
         onClick={next}
       >
-        Hello
+        Next
       </button>
     </div>
   );
