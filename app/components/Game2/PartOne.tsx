@@ -1,11 +1,16 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Cricle from "./Cricle";
-import { useAppSelector } from "@/app/useState";
+import { useAppDispatch, useAppSelector } from "@/app/useState";
+import { game2Action } from "@/app/GlobalRedux/game2Slice";
 const PartOne = () => {
   const { mnWords, mnIndex, partOneDis } = useAppSelector(
     (state) => state.game2
   );
+  const disPatch = useAppDispatch();
+  useEffect(() => {
+    disPatch(game2Action.getGame2AllWords());
+  }, []);
   const zone = "!!!";
   return (
     <div className="grid grid-rows-5 justify-center items-center gap-3">

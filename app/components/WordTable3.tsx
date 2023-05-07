@@ -28,6 +28,9 @@ const WordTable3 = () => {
     <div className="grid grid-cols-2 gap-2 m-auto">
       <p className="group w-full relative rounded-xl p-1 bg-slate-100/70 text-center items-center text-slate-900/90 font-bold text-[1rem] italic overflow-hidden duration-500">
         {main.word3}
+        <span className=" absolute smScreenMax:left-3 left-1 top-[50%] translate-y-[-50%] text-slate-900/50">
+          {main.word3Count}
+        </span>
         <button
           className="minusButton group-hover:translate-x-[0.5rem] text-black"
           onClick={minusButton}

@@ -67,9 +67,8 @@ class Dash {
   draw() {
     this.ctx.beginPath();
     this.ctx.arc(this.x - this.xTime, this.y - this.yTime, 10, 0, Math.PI * 2);
-    // this.ctx.arc(this.x, this.y, 10, 0, Math.PI * 2);
     this.ctx.closePath();
-    this.ctx.fillStyle = "rgb(255 , 255, 25)";
+    this.ctx.fillStyle = "rgba(255 , 255, 255, 0.5)";
     this.ctx.fill();
   }
 }

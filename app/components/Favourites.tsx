@@ -3,7 +3,7 @@ import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { mainAction } from "../GlobalRedux/MainSlice";
 import { randomStr } from "../_utiles/randomString";
-import { useAppDispatch , useAppSelector } from "../useState";
+import { useAppDispatch, useAppSelector } from "../useState";
 const Favourites = () => {
   const disPatch = useAppDispatch();
   const { favourite } = useAppSelector((state) => state.main);
@@ -12,8 +12,8 @@ const Favourites = () => {
     disPatch(mainAction.favouriteRemove(index));
   };
   return (
-    <div className="mt-12 ">
-      <ul className="font-bold text-[2rem] italic w-full flex flex-col">
+    <div className="bg-[url('./img/fav.jpg')] bg-cover bg-no-repeat bg-center h-[100vh] overflow-auto">
+      <ul className="font-bold text-[2rem] italic w-full flex flex-col mt-12 ">
         {favourite.map((el, index) => {
           const en: string[] = el.split("@@@");
           return (

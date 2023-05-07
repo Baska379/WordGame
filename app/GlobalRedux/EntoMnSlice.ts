@@ -16,6 +16,8 @@ interface EnToMn {
   checkButton: boolean;
   successOrErrorTime: boolean;
   askEnWords: string[];
+  askWords: boolean;
+  allWords: string[];
 }
 const initialState: EnToMn = {
   mnWord1: "",
@@ -31,6 +33,8 @@ const initialState: EnToMn = {
   checkButton: false,
   successOrErrorTime: false,
   askEnWords: [],
+  askWords: false,
+  allWords: [],
 };
 export const enToMnSlice = createSlice({
   name: "enToMn",
@@ -68,6 +72,9 @@ export const enToMnSlice = createSlice({
       const mn3 = checkInputEn(s.mnWord3, s.enWord3);
       if (mn2) s.allTrue[2] = true;
       if (mn1 && mn2 && mn3) {
+        s.allWords.push(s.mnWord1 + "---" + s.enWord1);
+        s.allWords.push(s.mnWord2 + "---" + s.enWord2);
+        s.allWords.push(s.mnWord3 + "---" + s.enWord3);
         s.nextButton = false;
         s.checkButton = true;
         s.enWord1 = "";
@@ -77,6 +84,9 @@ export const enToMnSlice = createSlice({
     },
     timeEnd: (s) => {
       s.successOrErrorTime = false;
+    },
+    setAskWords: (s, a: PayloadAction<boolean>) => {
+      s.askWords = a.payload;
     },
   },
 });

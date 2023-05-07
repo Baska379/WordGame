@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { useState } from "react";
 
@@ -35,7 +34,7 @@ const Menu = () => {
         <div className="absolute top-0 justify-center items-center right-[-5rem] w-[6rem] h-[5rem] font-bold bg-emerald-300/70 flex flex-col rounded-md text-[10px]">
           <p className="relative smGameMenu"></p>
           <Link
-            href={"/"}
+            href={"/gameOne"}
             className="m-auto rounded-lg flex-2  px-3 py-1 bg-slate-100/90"
           >
             Game 1

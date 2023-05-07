@@ -1,13 +1,9 @@
-'use client'
-import React from 'react'
-import Providers from '../components/Providers'
-import Favourites from '../components/Favourites'
+"use client";
+import React from "react";
+import Providers from "../components/Providers";
+import Favourites from "../components/Favourites";
 const Favourite = () => {
-  return (
-    <Providers>
-          <Favourites/>
-    </Providers>
-  )
-}
+  return <Favourites />;
+};
 
-export default Favourite
+export default Favourite;

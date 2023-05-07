@@ -10,17 +10,16 @@ import EndGame from "../components/Game2/EndGame";
 const Game2 = () => {
   return (
     <Providers>
-      <div>
+      <div className="from-slate-800 bg-slate-900">
         <div className="grid grid-rows-[70%_30%] w-full h-[100vh] ">
           <Canvas />
           <div className="mt-12 grid grid-cols-2 relative duration-500">
             <PartOne />
             <PartTwo />
             <EndGame />
-          </div>
-          <div className="">
             <NextButton />
           </div>
+          <div className=""></div>
         </div>
       </div>
     </Providers>

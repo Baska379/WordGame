@@ -1,3 +1,4 @@
+"use client";
 interface MainState {
   tableNumber: number;
   tableNumber2: number;
@@ -39,4 +40,9 @@ interface MainState {
   fav2: boolean;
   fav3: boolean;
   favouriteWords: string[];
+  word1Count: number;
+  word2Count: number;
+  word3Count: number;
+  headerBoolean: boolean;
+  footerBoolean: boolean;
 }

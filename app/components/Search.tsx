@@ -34,12 +34,12 @@ const Search = () => {
   };
 
   return (
-    <div className="flex-1 relative">
+    <div className="flex-1 relative ">
       <div className="">
         <input
           type="text"
           placeholder="Search here"
-          className=""
+          className="shadow-none"
           onChange={(el) => search(el)}
         />
       </div>

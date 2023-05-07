@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { mainAction } from "../GlobalRedux/MainSlice";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../useState";
@@ -26,6 +26,9 @@ const WordTable1 = () => {
   return (
     <div className="grid grid-cols-2 gap-2 m-auto">
       <p className="group w-full smScreenMax:text-[15px] smScreenMax:w-[180px] relative rounded-xl p-1 bg-slate-100/70 text-center items-center overflow-hidden text-slate-900/90 font-bold text-[1rem] italic ease-in duration-500">
+        <span className=" absolute smScreenMax:left-3 left-1 top-[50%] translate-y-[-50%] text-slate-900/50">
+          {main.word1Count}
+        </span>
         {main.word1}
         {main.addButton ? (
           <button
@@ -40,7 +43,7 @@ const WordTable1 = () => {
         {main.fav1 ? (
           <AiOutlineStar
             onClick={favourite}
-            className="favourite group-hover:translate-y-[0.3rem] group-hover:translate-x-[-50%] text-black"
+            className="favourite  group-hover:translate-y-[0.3rem] group-hover:translate-x-[-50%] text-black"
           />
         ) : (
           <AiFillStar

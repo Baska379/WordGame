@@ -1,5 +1,5 @@
 "use client";
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
   assistent,
   getAllEnWords,
@@ -49,12 +49,23 @@ const initialState: MainState = {
   fav2: true,
   fav3: true,
   favouriteWords: [],
+  word1Count: 500,
+  word2Count: 500,
+  word3Count: 500,
+  headerBoolean: false,
+  footerBoolean: false,
 };
 
 export const mainSlice = createSlice({
   name: "main",
   initialState,
   reducers: {
+    setHeaderBoolean: (s, a: PayloadAction<boolean>) => {
+      s.headerBoolean = a.payload;
+    },
+    setFooterBoolean: (s, a: PayloadAction<boolean>) => {
+      s.footerBoolean = a.payload;
+    },
     setNextBoolean: (s, a) => {
       s.nextBoolean = a.payload;
     },
@@ -100,7 +111,7 @@ export const mainSlice = createSlice({
         const result: boolean = table1Check(s.sendWord1, s.findEn);
         if (result === true) {
           const find = assistent(s.findEn, s.tableNumber).toString();
-          s.list__word.push(s.findEn + ": - " + find);
+          s.list__word.push(s.findEn + " - " + find);
           s.count++;
           s.success1 = true;
           s.nextBoolean = false;
@@ -117,8 +128,8 @@ export const mainSlice = createSlice({
         if (result === true && result2 === true) {
           const find = assistent(s.findEn, s.tableNumber).toString();
           const find2 = assistent(s.findEn2, s.tableNumber2).toString();
-          s.list__word.push(s.findEn + ": - " + find);
-          s.list__word.push(s.findEn2 + ": - " + find2);
+          s.list__word.push(s.findEn + " - " + find);
+          s.list__word.push(s.findEn2 + " - " + find2);
           s.count = s.count + 2;
           s.success1 = true;
           s.error1 = false;
@@ -150,9 +161,9 @@ export const mainSlice = createSlice({
           const find = assistent(s.findEn, s.tableNumber).toString();
           const find2 = assistent(s.findEn2, s.tableNumber2).toString();
           const find3 = assistent(s.findEn3, s.tableNumber3).toString();
-          s.list__word.push(s.findEn + ": - " + find);
-          s.list__word.push(s.findEn2 + ": - " + find2);
-          s.list__word.push(s.findEn3 + ": - " + find3);
+          s.list__word.push(s.findEn + " - " + find);
+          s.list__word.push(s.findEn2 + " - " + find2);
+          s.list__word.push(s.findEn3 + " - " + find3);
           s.count = s.count + 3;
           s.success1 = true;
           s.error1 = false;
@@ -245,6 +256,7 @@ export const mainSlice = createSlice({
         const findIndex = s.saveIndex1.indexOf(rand);
         if (findIndex === -1) {
           s.saveIndex1.push(rand);
+          s.word1Count--;
           const find = enWord
             .slice(rand, rand + 1)
             .toString()
@@ -282,6 +294,7 @@ export const mainSlice = createSlice({
         const rand: number = Math.floor(Math.random() * num);
         const findIndex = s.saveIndex2.indexOf(rand);
         if (findIndex === -1) {
+          s.word2Count--;
           s.saveIndex2.push(rand);
           const find = enWord.slice(rand, rand + 1).toString();
           s.findEn2 = find;
@@ -322,6 +335,7 @@ export const mainSlice = createSlice({
         const findIndex = s.saveIndex3.indexOf(rand);
         if (findIndex === -1) {
           s.saveIndex3.push(rand);
+          s.word3Count--;
           const find = enWord.slice(rand, rand + 1).toString();
           s.findEn3 = find;
           s.askWord3 = find;

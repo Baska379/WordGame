@@ -72,6 +72,7 @@ const game2Slice = createSlice({
       s.mnIndex = [];
       s.partOneDis = [];
       s.partTwoDis = [];
+      s.gameCount = 0;
       for (let i = 1; i <= s.lineNumber; i++) {
         s.partOneDis.push(false);
       }

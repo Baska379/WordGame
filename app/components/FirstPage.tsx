@@ -42,8 +42,12 @@ const FirstPage = () => {
     disPatch(mainAction.setNextBoolean(true));
     disPatch(mainAction.setCheckBoolean(false));
     disPatch(mainAction.handler1());
-    disPatch(mainAction.handler2());
-    disPatch(mainAction.handler3());
+    if (main.tableBoolean) {
+      disPatch(mainAction.handler2());
+    }
+    if (main.tableBoolean2) {
+      disPatch(mainAction.handler3());
+    }
   };
 
   const sendCheck = () => {
@@ -51,7 +55,7 @@ const FirstPage = () => {
   };
 
   return (
-    <div className="border-solid mt-[3rem] z-0 h-2/4 grid grid-cols-[28rem_3rem_2rem_1fr] grid-rows-[10rem_5rem] gap-3 justify-center relative bg-neutral-500/50 shadow-[0_0_20px_5px_rgba(0,0,0,1)] rounded-lg tall:grid-cols-[28rem_2rem_3rem] tall:grid-rows-[10rem_5rem_20rem] smScreenMax:text-[13px] smScreenMax:grid-cols-[23rem_1px]">
+    <div className=" border-solid mt-[3rem] z-0 h-2/4 grid grid-cols-[28rem_3rem_2rem_1fr] grid-rows-[10rem_5rem] gap-3 justify-center relative bg-neutral-500/50 shadow-[0_0_20px_5px_rgba(0,0,0,1)] rounded-lg tall:grid-cols-[28rem_2rem_3rem] tall:grid-rows-[10rem_5rem_20rem] smScreenMax:text-[13px] smScreenMax:grid-cols-[23rem_1px]">
       <div className="grid grid-rows-3 gap-5">
         <WordTable1 />
         {main.tableBoolean ? <WordTable2 /> : ""}
@@ -103,15 +107,15 @@ const FirstPage = () => {
           {main.count}
         </p>
       </div>
-      <div className="row-span-2 tall:absolute tall:left-0 tall:top-[20rem] overflow-auto ">
+      <div className="row-span-2 smScreenMax:h-[15rem] smScreenMax:w-full tall:absolute smScreenMax:overflow-auto  tall:left-0 tall:top-[20rem] overflow-auto ">
         {main.list__word.map((el, index) => {
           const word: string[] = el.split("-");
           return (
-            <p key={el + index.toString()} className="font-bold">
-              <span className="text-black bg-white rounded-md">
+            <p key={el + index.toString()} className="font-bold mt-3">
+              <span className="text-black bg-white rounded-md px-2 py-1">
                 {word[0].toLowerCase()}{" "}
               </span>
-              <span className="text-white bg-black ml-2 rounded-md">
+              <span className="text-white bg-black ml-2 rounded-md px-2 py-1">
                 {word[1].toLowerCase()}
               </span>
             </p>

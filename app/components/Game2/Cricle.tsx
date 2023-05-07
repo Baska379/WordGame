@@ -50,9 +50,9 @@ const Cricle = (props: PropsType) => {
         id={`@@@${props.ids}@@@`}
         onClick={(event) => typeSend(event.target)}
         disabled={props.disabled}
-        className={`w-full h-full rounded-[40%] overflow-visible ${props.color}`}
+        className={`w-full h-full rounded-[40%] overflow-visible smScreenMax:w-[70%] smScreenMax:text-[13px] smScreenMax:h-[70%] ${props.color}`}
       >
-        {props.word}
+        {props.word.split(", ")[0]}
       </button>
     </div>
   );

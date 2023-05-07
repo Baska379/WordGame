@@ -47,6 +47,9 @@ const EnInput = () => {
             style={{ opacity: successOrErrorTime ? "1" : "0" }}
           />
         )}
+        <strong className="absolute smScreenMax:hidden text-white top-[5px] left-[1.5rem]">
+          1
+        </strong>
         <input
           value={enWord1}
           onChange={(el) => handler1(el.target.value)}
@@ -71,6 +74,9 @@ const EnInput = () => {
         ) : (
           ""
         )}
+        <strong className="absolute smScreenMax:hidden text-white top-[5px] left-[1.5rem]">
+          2
+        </strong>
         <input
           value={enWord2}
           onChange={(el) => handler2(el.target.value)}
@@ -95,6 +101,9 @@ const EnInput = () => {
         ) : (
           ""
         )}
+        <strong className="absolute smScreenMax:hidden text-white top-[5px] left-[1.5rem]">
+          3
+        </strong>
         <input
           value={enWord3}
           onChange={(el) => handler3(el.target.value)}

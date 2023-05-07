@@ -34,6 +34,7 @@ const Ask = () => {
         className="hiddenSpan smScreenMax:w-[10rem] smScreenMax:text-[13px] text-black bg-slate-100/50 h-8 w-[20rem] top-12 z-30"
         style={{
           opacity: visible ? "0" : "1",
+          translate: visible ? "-600px" : "0px",
         }}
       >
         {findWord.split(", ").map((el, i) => {
@@ -49,9 +50,10 @@ const Ask = () => {
       </span>
       {main.tableBoolean ? (
         <span
-          className="hiddenSpan text-black bg-slate-100/50 h-8 w-[20rem] top-24 z-30"
+          className="hiddenSpan text-black smScreenMax:w-[10rem] smScreenMax:text-[13px] bg-slate-100/50 h-8 w-[20rem] top-24 z-30"
           style={{
             opacity: visible ? "0" : "1",
+            translate: visible ? "-600px" : "0px",
           }}
         >
           {findWord2.split(", ").map((el, i) => {
@@ -70,9 +72,10 @@ const Ask = () => {
       )}
       {main.tableBoolean2 ? (
         <span
-          className="hiddenSpan text-black bg-slate-100/50 h-8 w-[20rem] top-[9rem] z-30"
+          className="hiddenSpan text-black smScreenMax:w-[10rem] smScreenMax:text-[13px] bg-slate-100/50 h-8 w-[20rem] top-[9rem] z-30"
           style={{
             opacity: visible ? "0" : "1",
+            translate: visible ? "-600px" : "0px",
           }}
         >
           {findWord3.split(", ").map((el, i) => {

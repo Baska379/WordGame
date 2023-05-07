@@ -35,7 +35,8 @@
     content: none;
   }
   background: rgba(0, 255, 17, 0.307);
-  border-radius: 200%;
+  height: 2rem;
+  background: transparent;
 }
 .redCol {
   @include main();

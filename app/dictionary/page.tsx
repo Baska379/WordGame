@@ -36,10 +36,10 @@ const Dictionary = () => {
     }
   };
   return (
-    <div className="dictionary w-full z-0 h-full relative overflow-auto flex bg-[url('./img/dictionary.jpg')] bg-cover bg-no-repeat bg-center bg-scroll">
+    <div className="  dictionary w-full z-0 h-full relative overflow-auto flex bg-[url('./img/dictionary.jpg')] bg-cover bg-no-repeat bg-center bg-scroll">
       {page1 ? (
         <>
-          <div className="mt-10 text-white font-bold text-xl">
+          <div className="mt-10 text-white font-bold text-xl smScreenMax:text-[14px]">
             <ul>
               {getAllEnWords()
                 .en1.split("\n")
@@ -53,7 +53,7 @@ const Dictionary = () => {
                 ))}
             </ul>
           </div>
-          <div className="mt-10 text-white font-bold text-xl">
+          <div className="mt-10 text-white font-bold text-xl smScreenMax:text-[14px]">
             <ul>
               {getAllMnWords()
                 .mn1.split("\n")
@@ -73,7 +73,7 @@ const Dictionary = () => {
       )}
       {page2 ? (
         <>
-          <div className="mt-10 text-white font-bold text-xl">
+          <div className="mt-10 text-white font-bold text-xl smScreenMax:text-[14px]">
             <ul>
               {getAllEnWords()
                 .en2.split("\n")
@@ -87,7 +87,7 @@ const Dictionary = () => {
                 ))}
             </ul>
           </div>
-          <div className="mt-10 text-white font-bold text-xl">
+          <div className="mt-10 text-white font-bold text-xl smScreenMax:text-[14px]">
             <ul>
               {getAllMnWords()
                 .mn2.split("\n")
@@ -107,7 +107,7 @@ const Dictionary = () => {
       )}
       {page3 ? (
         <>
-          <div className="mt-10 text-white font-bold text-xl">
+          <div className="mt-10 text-white font-bold text-xl smScreenMax:text-[14px]">
             <ul>
               {getAllEnWords()
                 .en3.split("\n")
@@ -121,7 +121,7 @@ const Dictionary = () => {
                 ))}
             </ul>
           </div>
-          <div className="mt-10 text-white font-bold text-xl">
+          <div className="mt-10 text-white font-bold text-xl smScreenMax:text-[14px]">
             <ul>
               {getAllMnWords()
                 .mn3.split("\n")

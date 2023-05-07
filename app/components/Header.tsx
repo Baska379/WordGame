@@ -12,6 +12,7 @@ const Header = () => {
   const [color, setColor] = useState<string>("bg-emerald-300/50");
   const disPatch = useAppDispatch();
   const { smMenu } = useAppSelector((state) => state.header);
+  const { headerBoolean } = useAppSelector((state) => state.main);
   const move = (event: React.MouseEvent) => {
     if (menu) {
       setMenu(false);
@@ -34,7 +35,10 @@ const Header = () => {
   };
 
   return (
-    <div className={`flex fixed flex-row top-0 left-0 w-full z-50 ${color}`}>
+    <div
+      style={{ display: headerBoolean ? "flex" : "none" }}
+      className={`flex fixed flex-row top-0 left-0 w-full z-50 ${color}`}
+    >
       <div
         onMouseLeave={(even) => move(even)}
         className="flex-1 items-center justify-start flex gap-2 relative"
@@ -68,7 +72,7 @@ const Header = () => {
         {menu ? (
           <div className="absolute top-10 justify-center items-center left-0 w-[8rem] h-[8rem] font-bold bg-emerald-300/70 flex flex-col rounded-md">
             <Link
-              href={"/"}
+              href={"/gameOne"}
               className="m-auto rounded-lg flex-2 px-4 py-1 bg-slate-100/90"
               onClick={colorSwap2}
             >
